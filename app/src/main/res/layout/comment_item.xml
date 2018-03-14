@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:paddingBottom="@dimen/feed_item_padding_top_bottom"
+    android:paddingEnd="@dimen/feed_item_padding_left_right"
+    android:paddingStart="@dimen/feed_item_padding_left_right"
+    android:paddingTop="@dimen/feed_item_padding_top_bottom"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <!--<com.mobile.absoluke.travelie.RoundedImage-->
+    <!--android:id="@+id/roundImageAvatar"-->
+    <!--android:layout_width="@dimen/avatar_feed_size"-->
+    <!--android:layout_height="@dimen/avatar_feed_size"-->
+    <!--android:layout_marginBottom="8dp"-->
+    <!--android:layout_marginStart="@dimen/feed_item_padding_left_right"-->
+    <!--android:layout_marginTop="8dp"-->
+    <!--android:clickable="true"-->
+    <!--android:src="@drawable/ic_launcher_background"-->
+    <!--app:elevation="0dp"-->
+    <!--app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--app:layout_constraintEnd_toEndOf="parent"-->
+    <!--app:layout_constraintHorizontal_bias="0.0"-->
+    <!--app:layout_constraintStart_toStartOf="parent"-->
+    <!--app:layout_constraintTop_toTopOf="parent" />-->
+
+    <ImageView
+        android:id="@+id/roundImageAvatar"
+        android:layout_width="@dimen/avatar_feed_size"
+        android:layout_height="@dimen/avatar_feed_size"
+        android:src="@drawable/img_placeholder"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/textProfilePanel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:background="@drawable/round_textview_states"
+        android:paddingBottom="@dimen/feed_item_padding_top_bottom"
+        android:paddingEnd="@dimen/round_edittext_padding"
+        android:paddingStart="@dimen/round_edittext_padding"
+        android:paddingTop="@dimen/feed_item_padding_top_bottom"
+        app:layout_constraintStart_toEndOf="@id/roundImageAvatar"
+        app:layout_constraintTop_toTopOf="@+id/roundImageAvatar">
+
+        <TextView
+            android:id="@+id/tvUsername"
+            style="@style/feed_item_profile_name"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvContent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Write something here."
+            android:textColor="@color/black"
+            android:textSize="@dimen/feed_item_profile_name"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tvUsername"
+            app:layout_constraintTop_toBottomOf="@+id/tvUsername" />
+    </android.support.constraint.ConstraintLayout>
+</android.support.constraint.ConstraintLayout>

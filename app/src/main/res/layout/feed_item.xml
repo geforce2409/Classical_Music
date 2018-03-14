@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/feed_item_padding_top_bottom"
+    android:layout_marginTop="@dimen/feed_item_padding_top_bottom"
+    android:background="@color/white">
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/profile_panel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingEnd="@dimen/feed_item_padding_left_right">
+
+        <include
+            android:id="@+id/include"
+            layout="@layout/profile_panel" />
+
+        <ImageButton
+            android:id="@+id/imgbtnOption"
+            style="@style/bottom_icon"
+            android:layout_width="20dp"
+            android:layout_marginEnd="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/more" />
+
+        <ImageView
+            android:id="@+id/ivRating"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="45dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/contentPanel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/feed_item_padding_top_bottom"
+        android:layout_marginTop="@dimen/feed_item_padding_top_bottom"
+        android:paddingEnd="@dimen/feed_item_padding_left_right"
+        android:paddingStart="@dimen/feed_item_padding_left_right"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_panel">
+
+        <TextView
+            android:id="@+id/tvContent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/feed_item_profile_name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <include
+            android:id="@+id/Gallery"
+            layout="@layout/content_pick_multiple_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvContent" />
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/bottomPanel"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/toolbar_height"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/contentPanel">
+
+        <!--TODO: https://github.com/jd-alexander/LikeButton-->
+        <com.like.LikeButton
+            android:id="@+id/imgbtnLike"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:anim_scale_factor="3"
+            app:icon_size="@dimen/imgbtn_size"
+            app:icon_type="heart"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:like_drawable="@drawable/loved"
+            app:unlike_drawable="@drawable/love" />
+
+        <ImageButton
+            android:id="@+id/imgbtnCmt"
+            style="@style/bottom_icon"
+            android:layout_width="@dimen/imgbtn_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/imgbtnLike"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/comment" />
+
+        <ImageButton
+            android:id="@+id/imgbtnShare"
+            style="@style/bottom_icon"
+            android:layout_width="17dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="@dimen/feed_item_padding_left_right"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/imgbtnCmt"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/share" />
+
+        <TextView
+            android:id="@+id/tvCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/feed_item_padding_top_bottom"
+            android:layout_marginStart="@dimen/feed_item_padding_left_right"
+            android:layout_marginTop="@dimen/feed_item_padding_top_bottom"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.constraint.ConstraintLayout>

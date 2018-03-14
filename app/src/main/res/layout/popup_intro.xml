@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/round_popup"
+    android:paddingBottom="@dimen/feed_item_padding_left_right"
+    android:paddingEnd="@dimen/feed_item_padding_left_right"
+    android:paddingStart="@dimen/feed_item_padding_left_right"
+    android:paddingTop="@dimen/feed_item_padding_left_right">
+
+    <EditText
+        android:id="@+id/editBio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLength="101"
+        android:maxLines="2"
+        android:minLines="1"
+        android:theme="@style/TextLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/btnCancelBio"
+            style="@style/btn_theme"
+            android:text="@string/cancel" />
+
+        <Button
+            android:id="@+id/btnSaveBio"
+            style="@style/btn_theme"
+            android:text="@string/save" />
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

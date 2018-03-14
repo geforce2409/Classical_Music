@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Travellie</string>
+    <string name="title_activity_login">Sign in</string>
+
+    <!--facebook string-->
+    <string name="facebook_app_id">122046885142484</string>
+    <string name="fb_login_protocol_scheme">fb122046885142484</string>
+
+    <!-- Strings related to login -->
+    <string name="login_intro">
+        <font color="white">Find incredible\nplaces you\nwill</font>
+        <font color="#f9d641">love</font>
+    </string>
+    <string name="sub_intro">Explore the world searching\nby location, interests and\nmore on the go.</string>
+
+    <!-- Strings related to register -->
+    <string name="reg_intro">Almost there. Update your\nprofile to expand your network.</string>
+    <string name="first_name">First name</string>
+    <string name="last_name">Last name</string>
+    <string name="date_of_birth">Date of birth</string>
+    <string name="gender">Gender</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="other">Other</string>
+    <string name="update_profile">Update profile</string>
+
+    <string-array name="gender_list">
+        <item>Male</item>
+        <item>Female</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="Tag_list">
+        <item>Entertainment</item>
+        <item>Food</item>
+        <item>Accommodation</item>
+        <item>General</item>
+    </string-array>
+
+    <string-array name="post_type">
+        <item>Entertainment</item>
+        <item>Hotel</item>
+        <item>Food</item>
+        <item>General</item>
+    </string-array>
+
+    <string name="has_null_value">Please complete all fields</string>
+    <string name="update_success">Upload success</string>
+    <string name="update_post_success">Your post has been complete</string>
+
+    <string name="empty_content">You did not write anything</string>
+
+    <!-- Strings related to draft -->
+    <string name="draft_hello">What\'s on your mind?</string>
+    <string name="at">at</string>
+    <string name="search_for_places">Search for places</string>
+    <string name="rating_reminder">Let friends know your feelings by rating this review</string>
+    <string name="category_reminder">Please category your post</string>
+    <string name="post_success">Your post is now committed</string>
+
+    <!-- Strings related to draft -->
+    <string name="cancel">Cancel</string>
+    <string name="intro">Intro</string>
+    <string name="edit_intro">edit intro</string>
+
+    <!-- Strings related to notification -->
+    <string name="notify_like">voted</string>
+    <string name="notify_cmt">commented</string>
+    <string name="notify_shared">shared</string>
+</resources>

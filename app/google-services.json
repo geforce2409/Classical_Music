@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "407770496523",
+    "firebase_url": "https://travellie-5884f.firebaseio.com",
+    "project_id": "travellie-5884f",
+    "storage_bucket": "travellie-5884f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:407770496523:android:76549566aaed8951",
+        "android_client_info": {
+          "package_name": "com.mobile.absoluke.travellie"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "407770496523-2urrlojplgsj7808n7nnj8d53dlj94ki.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mobile.absoluke.travellie",
+            "certificate_hash": "f4c40d9a5f47c544a9265862654ac1ebab1682ef"
+          }
+        },
+        {
+          "client_id": "407770496523-j3kg1460a17k9d28lqavgroh1rmv7293.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mobile.absoluke.travellie",
+            "certificate_hash": "92fe7313023f14cb744a6b78bb90a5b0e56a24e3"
+          }
+        },
+        {
+          "client_id": "407770496523-s8qu6vk5gpq3lo9altincumke8h4s0jq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCE6GKu71UWd2bmtR9MZJwQRBVzpKJJKo0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "407770496523-s8qu6vk5gpq3lo9altincumke8h4s0jq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
