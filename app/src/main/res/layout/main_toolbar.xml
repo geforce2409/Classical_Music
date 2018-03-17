@@ -51,7 +51,7 @@
                     app:layout_constraintStart_toStartOf="parent" />
 
                 <!-- This is a custom right side button -->
-                <com.mobile.absoluke.travelie.RoundedImage
+                <com.mobile.absoluke.Classiq.RoundedImage
                     android:id="@+id/roundImageAvatar"
                     style="@style/Widget.AppCompat.ActionButton"
                     android:layout_width="25dp"

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.mobile.absoluke.travelie">
+    package="com.mobile.absoluke.Classiq">
 
     <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
@@ -22,6 +22,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
         <!-- facebook -->
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
@@ -45,24 +46,24 @@
                     tools:ignore="ManifestResource" />
             </intent-filter>
         </activity>
-        <activity android:name="com.mobile.absoluke.travelie.LoginActivity">
+        <activity
+            android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.mobile.absoluke.travelie.RegisterActivity" />
-        <activity android:name="com.mobile.absoluke.travelie.MainActivity" />
-        <activity android:name="com.mobile.absoluke.travelie.ProfileActivity" />
-        <activity android:name="com.mobile.absoluke.travelie.AddPostActivity" />
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".ProfileActivity" />
+        <activity android:name=".AddPostActivity" />
         <activity
-            android:name="com.mobile.absoluke.travelie.PopupIntro"
+            android:name=".PopupIntro"
             android:theme="@style/AppTheme.CustomPopupTheme" />
         <activity
             android:name=".PopupComment"
             android:theme="@style/PopupAnimation" />
-
 
         <!-- <activity -->
         <!-- android:name=".ProfileActivity" -->

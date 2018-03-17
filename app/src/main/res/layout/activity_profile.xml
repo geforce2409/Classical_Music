@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.mobile.absoluke.travelie.ProfileActivity">
+    tools:context="com.mobile.absoluke.Classiq.ProfileActivity">
 
     <include
         android:id="@+id/appbar"
@@ -15,7 +15,7 @@
     <!--<include layout="@layout/content_profile"-->
         <!--android:id="@+id/contentProfile"/>-->
 
-    <com.mobile.absoluke.travelie.RoundedImage
+    <com.mobile.absoluke.Classiq.RoundedImage
         android:id="@+id/roundImageChangeAvatar"
         android:layout_width="@dimen/avatar_size"
         android:layout_height="@dimen/avatar_size"

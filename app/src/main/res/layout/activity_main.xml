@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.mobile.absoluke.travelie.MainActivity">
+    tools:context="com.mobile.absoluke.Classiq.MainActivity">
 
     <include
         android:id="@+id/appbar"

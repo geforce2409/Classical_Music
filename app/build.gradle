@@ -4,7 +4,7 @@ android {
     compileSdkVersion 26
     buildToolsVersion '27.0.3'
     defaultConfig {
-        applicationId "com.mobile.absoluke.travellie"
+        applicationId "com.mobile.absoluke.Classiq"
         minSdkVersion 23
         targetSdkVersion 26
         versionCode 1
@@ -30,7 +30,7 @@ dependencies {
     androidTestImplementation('com.android.support.test.espresso:espresso-core:3.0.1', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-
+    compile 'com.google.firebase:firebase-auth:11.8.0'
     compile 'com.google.firebase:firebase-core:11.8.0'
     compile 'com.facebook.android:facebook-login:4.28.0'
     compile 'com.squareup.picasso:picasso:2.5.2'             // piccasso for display image
@@ -45,10 +45,5 @@ dependencies {
     compile project(path: ':multipleimagepickerlibrary')
     compile 'de.hdodenhof:circleimageview:2.2.0'
 }
-
-
-
-
-
 
 apply plugin: 'com.google.gms.google-services'
