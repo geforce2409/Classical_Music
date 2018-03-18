@@ -47,12 +47,12 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <Spinner
-                android:id="@+id/spinnerTag"
-                android:layout_width="145dp"
-                android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvUsername" />
+            <!--<Spinner-->
+            <!--android:id="@+id/spinnerTag"-->
+            <!--android:layout_width="145dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--app:layout_constraintStart_toStartOf="parent"-->
+            <!--app:layout_constraintTop_toBottomOf="@+id/tvUsername" />-->
         </android.support.constraint.ConstraintLayout>
 
     </android.support.constraint.ConstraintLayout>
@@ -90,24 +90,24 @@
         android:layout_height="0dp"
         android:paddingEnd="@dimen/feed_item_padding_left_right"
         android:paddingStart="@dimen/feed_item_padding_left_right"
-        app:layout_constraintBottom_toTopOf="@+id/ratingBar"
+        app:layout_constraintBottom_toTopOf="@+id/bottomPanel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText" />
     <!--</ScrollView>-->
 
-    <!--TODO: https://github.com/sujithkanna/SmileyRating-->
-    <com.hsalf.smilerating.SmileRating
-        android:id="@+id/ratingBar"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginBottom="8dp"
-        app:isIndicator="false"
-        app:layout_constraintBottom_toTopOf="@id/bottomPanel"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
-    <!--isIndicator: false allow the user to set smiley rating.
-                     true make the RatingBar just an indicator which is untouchable and used to just show some rating by default.-->
+    <!--&lt;!&ndash;TODO: https://github.com/sujithkanna/SmileyRating&ndash;&gt;-->
+    <!--<com.hsalf.smilerating.SmileRating-->
+    <!--android:id="@+id/ratingBar"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="0dp"-->
+    <!--android:layout_marginBottom="8dp"-->
+    <!--app:isIndicator="false"-->
+    <!--app:layout_constraintBottom_toTopOf="@id/bottomPanel"-->
+    <!--app:layout_constraintLeft_toLeftOf="parent"-->
+    <!--app:layout_constraintRight_toRightOf="parent" />-->
+    <!--&lt;!&ndash;isIndicator: false allow the user to set smiley rating.-->
+    <!--true make the RatingBar just an indicator which is untouchable and used to just show some rating by default.&ndash;&gt;-->
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/bottomPanel"
