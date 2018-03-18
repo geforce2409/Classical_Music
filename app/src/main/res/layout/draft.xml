@@ -88,8 +88,6 @@
         layout="@layout/content_pick_multiple_image"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:paddingEnd="@dimen/feed_item_padding_left_right"
-        android:paddingStart="@dimen/feed_item_padding_left_right"
         app:layout_constraintBottom_toTopOf="@+id/bottomPanel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

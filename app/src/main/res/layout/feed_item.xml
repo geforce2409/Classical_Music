@@ -42,8 +42,6 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/feed_item_padding_top_bottom"
         android:layout_marginTop="@dimen/feed_item_padding_top_bottom"
-        android:paddingEnd="@dimen/feed_item_padding_left_right"
-        android:paddingStart="@dimen/feed_item_padding_left_right"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -53,6 +51,9 @@
             android:id="@+id/tvContent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingEnd="@dimen/feed_item_padding_left_right"
+            android:paddingStart="@dimen/feed_item_padding_left_right"
+            android:text="Content here"
             android:textSize="@dimen/feed_item_profile_name"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
