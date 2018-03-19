@@ -3,12 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include
-        android:id="@+id/Gallery"
-        layout="@layout/content_pick_multiple_image"
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:paddingEnd="@dimen/feed_item_padding_left_right"
-        android:paddingStart="@dimen/feed_item_padding_left_right" />
+        android:layout_height="match_parent"
+        android:text="Achievement"
+        android:textSize="50dp" />
 
 </android.support.constraint.ConstraintLayout>

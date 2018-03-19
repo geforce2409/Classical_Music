@@ -39,7 +39,7 @@ import dataobject.UserInfo;
  * Modified by Quan Tran Minh on 15/11/2017
  */
 
-public class FragmentPosts extends Fragment {
+public class FragmentSaved extends Fragment {
 
     //Pagnition - partial load newsfeed
     final int itemPerTurn = 3;    // số item mỗi lượt
@@ -75,7 +75,7 @@ public class FragmentPosts extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_posts, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_saved, container, false);
 
 
 

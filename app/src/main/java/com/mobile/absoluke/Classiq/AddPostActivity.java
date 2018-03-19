@@ -135,7 +135,7 @@ public class AddPostActivity extends AppCompatActivity {
         btnPost = findViewById(R.id.btnPost);
         ratingBar = findViewById(R.id.ratingBar);
 
-        spnTag = findViewById(R.id.spinnerTag);
+        //spnTag = findViewById(R.id.spinnerTag);
 
         final ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.Tag_list, android.R.layout.simple_spinner_item);
