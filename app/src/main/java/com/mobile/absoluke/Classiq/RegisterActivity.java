@@ -129,33 +129,33 @@ public class RegisterActivity extends AppCompatActivity {
         //
         //Init
         //
-        userInfo = new UserInfo();
-
-
-        //Get data from previous intent
-        intent = getIntent();
-        bundle = intent.getBundleExtra("BUNDLE");
-
-        String firstName = Profile.getCurrentProfile().getFirstName();
-        String lastName = Profile.getCurrentProfile().getLastName() + " " + Profile.getCurrentProfile().getMiddleName();
-
-        Uri profileUri = Profile.getCurrentProfile().getProfilePictureUri(200,200);
-        Log.i(TAG, "Profile uri: " + profileUri);
-
-        etFirstName.setText(firstName);
-        etLastName.setText(lastName);
-
-        Picasso.with(RegisterActivity.this).load(profileUri).into(roundedImageChangeAvatar, new Callback() {
-            @Override
-            public void onSuccess() {
-
-            }
-
-            @Override
-            public void onError() {
-                Toast.makeText(RegisterActivity.this, "Error when loading image", Toast.LENGTH_SHORT).show();
-            }
-        });
+//        userInfo = new UserInfo();
+//
+//
+//        //Get data from previous intent
+//        intent = getIntent();
+//        bundle = intent.getBundleExtra("BUNDLE");
+//
+//        String firstName = Profile.getCurrentProfile().getFirstName();
+//        String lastName = Profile.getCurrentProfile().getLastName() + " " + Profile.getCurrentProfile().getMiddleName();
+//
+//        Uri profileUri = Profile.getCurrentProfile().getProfilePictureUri(200,200);
+//        Log.i(TAG, "Profile uri: " + profileUri);
+//
+//        etFirstName.setText(firstName);
+//        etLastName.setText(lastName);
+//
+//        Picasso.with(RegisterActivity.this).load(profileUri).into(roundedImageChangeAvatar, new Callback() {
+//            @Override
+//            public void onSuccess() {
+//
+//            }
+//
+//            @Override
+//            public void onError() {
+//                Toast.makeText(RegisterActivity.this, "Error when loading image", Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
     }
 
@@ -257,7 +257,7 @@ public class RegisterActivity extends AppCompatActivity {
                                     userinfoRef.child(userInfo.getUserid()).setValue(userInfo);
 
                                     Toast.makeText(RegisterActivity.this, R.string.update_success, Toast.LENGTH_SHORT).show();
-                                    Tool.changeActivity(RegisterActivity.this, ProfileActivity.class);
+                                    Tool.changeActivity(RegisterActivity.this, MainActivity.class);
                                 }
                             });
 

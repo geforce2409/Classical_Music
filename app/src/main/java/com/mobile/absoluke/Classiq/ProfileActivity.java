@@ -147,7 +147,7 @@ public class ProfileActivity extends AppCompatActivity {
         imageCover = findViewById(R.id.imageCover);
         tvUsername = findViewById(R.id.username);
         roundedImageChangeAvatar = findViewById(R.id.roundImageChangeAvatar);
-
+        btnIntro = findViewById(R.id.btnIntro);
 
         // Set a click listener for the Popup Intro
         btnIntro.setOnClickListener(new View.OnClickListener() {

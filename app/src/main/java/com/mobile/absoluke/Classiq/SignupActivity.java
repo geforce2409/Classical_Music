@@ -79,7 +79,7 @@ public class SignupActivity extends AppCompatActivity {
                             if (task.isSuccessful()) {
                                 // Sign in success, update UI with the signed-in user's information
                                 Toast.makeText(SignupActivity.this, "Register successed", Toast.LENGTH_SHORT).show();
-                                //Tool.changeActivity(RegisterActivity.this, MainActivity.class);
+                                Tool.changeActivity(SignupActivity.this, MainActivity.class);
 
                             } else {
                                 // If sign in fails, display a message to the user.

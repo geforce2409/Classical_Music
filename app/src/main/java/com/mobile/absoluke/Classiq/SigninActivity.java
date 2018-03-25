@@ -75,6 +75,7 @@ public class SigninActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Toast.makeText(SigninActivity.this, "Authentication successed.", Toast.LENGTH_SHORT).show();
+                            Tool.changeActivity(SigninActivity.this, MainActivity.class);
                         } else {
                             // If sign in fails, display a message to the user.
                             Toast.makeText(SigninActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();

@@ -25,7 +25,7 @@ import dataobject.Notification;
  * Created by Yul Lucia on 12/31/2017.
  */
 
-public class FragmentNotification extends Fragment {
+public class NotificationActivity extends Fragment {
 
     //Firebase
     DatabaseReference mDatabase, notifyRef;
@@ -41,7 +41,7 @@ public class FragmentNotification extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View itemView = inflater.inflate(R.layout.fragment_notification, container, false);
+        View itemView = inflater.inflate(R.layout.activity_notification, container, false);
         mDatabase = FirebaseDatabase.getInstance().getReference();
         currentUser = FirebaseAuth.getInstance().getCurrentUser();
 
