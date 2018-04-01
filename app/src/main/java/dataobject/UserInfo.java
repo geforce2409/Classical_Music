@@ -11,7 +11,6 @@ import java.util.List;
 
 public class UserInfo {
     private String userid;
-    //private String username;
     private String firstname;
     private String lastname;
     private String dateofbirth;
@@ -19,10 +18,8 @@ public class UserInfo {
     private String coverLink;
     private int gender; //0: male | 1: female | 2: other
     private String email;
-    private String phone;
     private String description;
-    private String rank; //Chinh lai kieu du lieu sau
-    private List<String> friends; //Chua thong tin cac userid
+    private int rank; //Chinh lai kieu du lieu sau
 
     public UserInfo(){
         //Default constructor for firebase getting data return
@@ -30,7 +27,7 @@ public class UserInfo {
 
     public UserInfo(String uid, String fname,
                     String lname, String dob, String avt, String cvr,
-                    int gd, String em, String p, String des, String rk, List<String> frd){
+                    int gd, String em, String des, int rk){
         userid = uid;
         //username = usrn;
         firstname = fname;
@@ -40,10 +37,8 @@ public class UserInfo {
         coverLink = cvr;
         gender = gd;
         email = em;
-        phone = p;
         description = des;
         rank = rk;
-        friends = frd;
     }
 
     //Get-Set
@@ -56,10 +51,8 @@ public class UserInfo {
     public String getCoverLink() { return coverLink; }
     public int getGender() { return gender; }
     public String getEmail() { return email; }
-    public String getPhone() { return phone; }
     public String getDescription() { return description; }
-    public String getRank() { return rank; } //Chinh lai kieu du lieu sau
-    public List<String> getFriends() { return friends; }
+    public int getRank() { return rank; } //Chinh lai kieu du lieu sau
 
     public void setUserid(String value) { userid = value; }
     //public void setUsername(String value) { username = value; }
@@ -70,9 +63,6 @@ public class UserInfo {
     public void setCoverLink(String value) { coverLink = value; }
     public void setGender(int value) { gender = value; }
     public void setEmail(String value) { email = value; }
-    public void setPhone(String value) { phone = value; }
     public void setDescription(String value) { description = value; }
-    public void setRank(String value) { rank = value; }
-    public void setFriends(List<String> value) { friends = value; }
-    public void addFriend(String usrid) { friends.add(usrid); }
+    public void setRank(int value) { rank = value; }
 }
