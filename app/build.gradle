@@ -24,22 +24,22 @@ dependencies {
     //noinspection GradleCompatible
     implementation 'com.android.support:appcompat-v7:26.1.0'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
-    implementation 'com.google.firebase:firebase-auth:11.8.0'
+    implementation 'com.google.firebase:firebase-auth:12.0.1'
     implementation 'com.android.support:design:26.1.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation('com.android.support.test.espresso:espresso-core:3.0.1', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.google.firebase:firebase-auth:11.8.0'
-    compile 'com.google.firebase:firebase-core:11.8.0'
+    compile 'com.google.firebase:firebase-auth:12.0.1'
+    compile 'com.google.firebase:firebase-core:12.0.1'
     compile 'com.facebook.android:facebook-login:4.28.0'
     compile 'com.squareup.picasso:picasso:2.5.2'             // piccasso for display image
-    compile 'com.google.firebase:firebase-storage:11.8.0'    // firebase storage
-    compile 'com.google.firebase:firebase-database:11.8.0'   // firebase database
+    compile 'com.google.firebase:firebase-storage:12.0.1'    // firebase storage
+    compile 'com.google.firebase:firebase-database:12.0.1'   // firebase database
     compile 'com.firebaseui:firebase-ui-storage:0.6.0'       // FirebaseUI Storage only
 
     compile 'com.github.sujithkanna:smileyrating:1.6.8'      // Custom Rating Bar
-    compile 'com.android.support.constraint:constraint-layout:1.1.0-beta4'      // Beta Constraint Layout
+    compile 'com.android.support.constraint:constraint-layout:1.1.0-beta6'      // Beta Constraint Layout
     compile 'com.aurelhubert:ahbottomnavigation:2.1.0'
     compile 'com.github.jd-alexander:LikeButton:0.2.3'
     compile project(path: ':multipleimagepickerlibrary')
