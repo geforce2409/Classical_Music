@@ -1,6 +1,5 @@
 package com.mobile.absoluke.Classiq;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -25,7 +24,7 @@ public class SigninActivity extends AppCompatActivity {
     //Components
     Button btnLogin;
     EditText edtEmail, edtPassword;
-    TextView txtRegister;
+    TextView tvRegister;
 
     //Firebase
     FirebaseAuth mAuth;
@@ -45,9 +44,9 @@ public class SigninActivity extends AppCompatActivity {
     private void matchComponents(){
         //Match components
         btnLogin = findViewById(R.id.btnLoginConfirm);
-        edtEmail = findViewById(R.id.txtLoginEmail);
-        edtPassword = findViewById(R.id.txtLoginPassword);
-        txtRegister = findViewById(R.id.txtRegister);
+        edtEmail = findViewById(R.id.etLoginEmail);
+        edtPassword = findViewById(R.id.etLoginPassword);
+        tvRegister = findViewById(R.id.tvRegister);
 
         // Set events
         btnLogin.setOnClickListener(new View.OnClickListener() {
@@ -57,7 +56,7 @@ public class SigninActivity extends AppCompatActivity {
             }
         });
 
-        txtRegister.setOnClickListener(new View.OnClickListener() {
+        tvRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Tool.changeActivity(SigninActivity.this, SignupActivity.class);

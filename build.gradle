@@ -24,7 +24,8 @@ allprojects {
         //facebook
         mavenCentral()
 
-        maven { url "https://jitpack.io" } /*Like button*/
+        maven { url "https://jitpack.io"            /*Like button*/ }
+        maven { url "https://maven.google.com" }    //Google's Maven repository
     }
 }
 
