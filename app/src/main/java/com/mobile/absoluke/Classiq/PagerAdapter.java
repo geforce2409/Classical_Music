@@ -10,7 +10,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 
 public class PagerAdapter extends FragmentStatePagerAdapter {
 
-    String[] listFragment = {"FragmentLocation", "FragmentPosts", "FragmentPhotos", "FragmentAbout"};
+    String[] listFragment = {"FragmentAchievement", "FragmentSaved", "FragmentDetails"};
     public PagerAdapter(FragmentManager fm) {
         super(fm);
     }
@@ -19,24 +19,19 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                FragmentLocation fragmentLocation = new FragmentLocation();
+                FragmentAchievement fragmentAchievement = new FragmentAchievement();
 
-                return fragmentLocation;
+                return fragmentAchievement;
 
             case 1:
-                FragmentPosts fragmentPosts = new FragmentPosts();
+                FragmentSaved fragmentSaved = new FragmentSaved();
 
-                return fragmentPosts;
+                return fragmentSaved;
 
             case 2:
-                FragmentPhotos fragmentPhotos = new FragmentPhotos();
+                FragmentDetails fragmentDetails = new FragmentDetails();
 
-                return fragmentPhotos;
-
-            case 3:
-                FragmentAbout fragmentAbout = new FragmentAbout();
-
-                return fragmentAbout;
+                return fragmentDetails;
         }
         return null;
     }

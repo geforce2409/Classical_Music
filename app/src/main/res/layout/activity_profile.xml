@@ -96,24 +96,23 @@
                 app:tabIndicatorHeight="0dp">
 
                 <android.support.design.widget.TabItem
+                    android:id="@+id/tabAchievement "
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:icon="@drawable/location" />
 
                 <android.support.design.widget.TabItem
+                    android:id="@+id/tabSaved "
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:icon="@drawable/posts" />
 
                 <android.support.design.widget.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:icon="@drawable/photos" />
-
-                <android.support.design.widget.TabItem
+                    android:id="@+id/tabDetails"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:icon="@drawable/about" />
+
             </android.support.design.widget.TabLayout>
 
             <!--Horizontal Line-->
@@ -135,7 +134,7 @@
             <FrameLayout
                 android:id="@+id/frameContent"
                 android:layout_width="match_parent"
-                android:layout_height="2000dp"
+                android:layout_height="700dp"
                 android:layout_marginTop="@dimen/feed_item_padding_top_bottom"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -161,6 +160,6 @@
         app:backgroundTint="@color/colorAccent"
         app:layout_anchor="@id/nsvContentProfile"
         app:layout_anchorGravity="bottom|end"
-        app:layout_behavior="com.mobile.absoluke.travelie.FAB_Float_on_Scroll" />
+        app:layout_behavior="com.mobile.absoluke.Classiq.FAB_Float_on_Scroll" />
 
 </android.support.design.widget.CoordinatorLayout>

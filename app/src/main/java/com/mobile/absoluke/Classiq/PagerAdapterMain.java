@@ -10,7 +10,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
  */
 
 public class PagerAdapterMain extends FragmentStatePagerAdapter {
-    String[] listFragment = {"FragmentHome", "FragmentEntertainment", "FragmentFood", "FragmentAccommodation", "FragmentNotification"};
+    String[] listFragment = {"FragmentHome", "FragmentQuiz"};
 
     public PagerAdapterMain(FragmentManager fm) {
         super(fm);
@@ -24,25 +24,10 @@ public class PagerAdapterMain extends FragmentStatePagerAdapter {
 
                 return fragmentHome;
 
-            case 1:
-                FragmentEntertainment fragmentEntertainment = new FragmentEntertainment();
-
-                return fragmentEntertainment;
-
-            case 2:
-                FragmentFood fragmentFood = new FragmentFood();
-
-                return fragmentFood;
-
-            case 3:
-                FragmentAccommodation fragmentAccommodation = new FragmentAccommodation();
-
-                return fragmentAccommodation;
-
-            case 4:
-                FragmentNotification fragmentNotification = new FragmentNotification();
-
-                return fragmentNotification;
+//            case 1:
+//                FragmentQuiz fragmentQuiz = new FragmentQuiz();
+//
+//                return fragmentQuiz;
         }
         return null;
     }

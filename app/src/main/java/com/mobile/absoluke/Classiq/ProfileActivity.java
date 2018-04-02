@@ -68,7 +68,6 @@ public class ProfileActivity extends AppCompatActivity {
     private int[] tabIcons = {
             R.drawable.location,
             R.drawable.posts,
-            R.drawable.photos,
             R.drawable.about
     };
 
@@ -78,9 +77,9 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
 
         createTabFragment();
-        initFirabase();
+        //initFirabase();
         matchComponents();
-        loadDataFromFirebase();
+        //loadDataFromFirebase();
     }
 
     private void createTabFragment(){
@@ -112,7 +111,6 @@ public class ProfileActivity extends AppCompatActivity {
         tabLayout.getTabAt(0).getIcon().setColorFilter(Color.BLACK, PorterDuff.Mode.SRC_IN);
         tabLayout.getTabAt(1).getIcon().setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_IN);
         tabLayout.getTabAt(2).getIcon().setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_IN);
-        tabLayout.getTabAt(3).getIcon().setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_IN);
 
 
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -143,14 +141,13 @@ public class ProfileActivity extends AppCompatActivity {
         tabLayout.getTabAt(0).setIcon(tabIcons[0]);
         tabLayout.getTabAt(1).setIcon(tabIcons[1]);
         tabLayout.getTabAt(2).setIcon(tabIcons[2]);
-        tabLayout.getTabAt(3).setIcon(tabIcons[3]);
     }
 
     private void matchComponents() {
         imageCover = findViewById(R.id.imageCover);
         tvUsername = findViewById(R.id.username);
         roundedImageChangeAvatar = findViewById(R.id.roundImageChangeAvatar);
-
+        btnIntro = findViewById(R.id.btnIntro);
 
         // Set a click listener for the Popup Intro
         btnIntro.setOnClickListener(new View.OnClickListener() {
@@ -231,63 +228,63 @@ public class ProfileActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-    private void initFirabase(){
-        //Auth
-        auth = FirebaseAuth.getInstance();
-        currentUser = auth.getCurrentUser();
-
-        //Database
-        mDatabase = FirebaseDatabase.getInstance().getReference();
-
-        //Storage
-        storage = FirebaseStorage.getInstance("gs://travellie-5884f.appspot.com");
-        storageRef = storage.getReference();
-
-        intent = getIntent();
-        bundle = intent.getBundleExtra("BUNDLE");
-
-        tvIntro = findViewById(R.id.tvIntro);
-        btnIntro = findViewById(R.id.btnIntro);
-        btnRight = findViewById(R.id.btn_right);
-
-        if (bundle == null){
-            userID = currentUser.getUid();
-            btnRight.setVisibility(View.INVISIBLE);
-        }
-        else{
-            userID = bundle.getString("ID");
-            btnIntro.setVisibility(View.INVISIBLE);
-        }
-    }
-
-    private  void loadDataFromFirebase(){
-        curUserRef = mDatabase.child("users_info").child(userID);
-        curUserRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-               userInfo = dataSnapshot.getValue(UserInfo.class);
-               Log.i(TAG, "Avatar link: " + userInfo.getAvatarLink());
-                Log.i(TAG, "User id: " + userInfo.getUserid());
-
-               //Load info to UI
-                //-Load avatar and cover
-                StorageReference avatarRef = storage.getReferenceFromUrl(userInfo.getAvatarLink());
-                Log.i(TAG, "avatarRef: " + avatarRef);
-
-                Picasso.with(ProfileActivity.this).load(Uri.parse(userInfo.getAvatarLink())).into(roundedImageChangeAvatar);
-
-                Picasso.with(ProfileActivity.this).load(Uri.parse(userInfo.getCoverLink())).into(imageCover);
-
-                //-Load info
-                String fullName = userInfo.getLastname() + " " + userInfo.getFirstname();
-                tvUsername.setText(fullName);
-                tvIntro.setText(userInfo.getDescription().toString());
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }
+//    private void initFirabase(){
+//        //Auth
+//        auth = FirebaseAuth.getInstance();
+//        currentUser = auth.getCurrentUser();
+//
+//        //Database
+//        mDatabase = FirebaseDatabase.getInstance().getReference();
+//
+//        //Storage
+//        storage = FirebaseStorage.getInstance("gs://travellie-5884f.appspot.com");
+//        storageRef = storage.getReference();
+//
+//        intent = getIntent();
+//        bundle = intent.getBundleExtra("BUNDLE");
+//
+//        tvIntro = findViewById(R.id.tvIntro);
+//        btnIntro = findViewById(R.id.btnIntro);
+//        btnRight = findViewById(R.id.btn_right);
+//
+//        if (bundle == null){
+//            userID = currentUser.getUid();
+//            btnRight.setVisibility(View.INVISIBLE);
+//        }
+//        else{
+//            userID = bundle.getString("ID");
+//            btnIntro.setVisibility(View.INVISIBLE);
+//        }
+//    }
+//
+//    private  void loadDataFromFirebase(){
+//        curUserRef = mDatabase.child("users_info").child(userID);
+//        curUserRef.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//               userInfo = dataSnapshot.getValue(UserInfo.class);
+//               Log.i(TAG, "Avatar link: " + userInfo.getAvatarLink());
+//                Log.i(TAG, "User id: " + userInfo.getUserid());
+//
+//               //Load info to UI
+//                //-Load avatar and cover
+//                StorageReference avatarRef = storage.getReferenceFromUrl(userInfo.getAvatarLink());
+//                Log.i(TAG, "avatarRef: " + avatarRef);
+//
+//                Picasso.with(ProfileActivity.this).load(Uri.parse(userInfo.getAvatarLink())).into(roundedImageChangeAvatar);
+//
+//                Picasso.with(ProfileActivity.this).load(Uri.parse(userInfo.getCoverLink())).into(imageCover);
+//
+//                //-Load info
+//                String fullName = userInfo.getLastname() + " " + userInfo.getFirstname();
+//                tvUsername.setText(fullName);
+//                tvIntro.setText(userInfo.getDescription().toString());
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
+//    }
 }

@@ -1,7 +1,9 @@
 package com.mobile.absoluke.Classiq;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -10,6 +12,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -25,37 +30,54 @@ import com.google.firebase.storage.StorageReference;
 import java.util.ArrayList;
 import java.util.List;
 
+import dataobject.POST_TYPE;
 import dataobject.Post;
+import dataobject.UserInfo;
 
 /**
- * Created by Yul Lucia on 12/16/2017.
+ * Created by Yul Lucia on 11/07/2017.
+ * Modified by Quan Tran Minh on 15/11/2017
  */
 
-public class FragmentEntertainment extends Fragment {
+public class FragmentSaved extends Fragment {
 
+    //Pagnition - partial load newsfeed
+    final int itemPerTurn = 3;    // số item mỗi lượt
+    String userID;
+    //Intent
+    Intent intent;
+    Bundle bundle;
     //List Post
     RecyclerView recyvwPosts;
     PostRecyclerAdapter adapter;
     RecyclerView.LayoutManager layoutManager;
     List<Post> listPost;    //test
-
+    //Component
+    Button imgbtnPost;
+    Button imgbtnChoosePic;
+    EditText etEditPost;
+    Spinner spnPostType;
+    FloatingActionButton fbtnAddPost;
     //Firebase
     FirebaseAuth auth;
     FirebaseUser currentUser;
     DatabaseReference mDatabase, postUserRef, curUserRef;
     FirebaseStorage storage;
     StorageReference storageRef;
-
-    //Pagnition - partial load newsfeed
-    final int itemPerTurn = 3;    // số item mỗi lượt
+    //dataobject
+    UserInfo userInfo;
     int indexTurn = 0;      // số turn hiện tại
     boolean isLoading;
     String keystart = "";
 
+    POST_TYPE postTypeChoice;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_entertainment, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_saved, container, false);
+
+
 
         listPost = new ArrayList<>();
         listPost.clear();
@@ -64,9 +86,14 @@ public class FragmentEntertainment extends Fragment {
         indexTurn = 0;
         isLoading = false;
 
+        //Match Components
         matchComponent(rootView);
+        setEventComponents();
         initFirebase();
         initRecyclerView();
+        loadPosts();
+
+
 
         return rootView;
     }
@@ -74,13 +101,24 @@ public class FragmentEntertainment extends Fragment {
     public void initFirebase(){
         auth = FirebaseAuth.getInstance();
         currentUser = auth.getCurrentUser();
+
+        intent = getActivity().getIntent();
+        bundle = intent.getBundleExtra("BUNDLE");
+
+        if (bundle == null){
+            userID = currentUser.getUid();
+        }
+        else{
+            userID = bundle.getString("ID");
+        }
+
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        postUserRef = mDatabase.child("newsfeed/entertainment");
+        postUserRef = mDatabase.child("interactions/posts").child(userID);
         storage = FirebaseStorage.getInstance("gs://travellie-5884f.appspot.com");
         storageRef = storage.getReference();
 
         // Lấy user info
-        curUserRef = mDatabase.child("users_info").child(currentUser.getUid());
+        curUserRef = mDatabase.child("users_info").child(userID);
 
         //Load newsfeed
         Query query = postUserRef.orderByKey().startAt("").limitToLast(itemPerTurn);
@@ -213,5 +251,13 @@ public class FragmentEntertainment extends Fragment {
                 R.array.post_type, android.R.layout.simple_spinner_item);
         // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+    }
+
+    public void setEventComponents(){
+
+    }
+
+    public void loadPosts(){
+
     }
 }
