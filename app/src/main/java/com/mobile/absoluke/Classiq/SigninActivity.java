@@ -51,9 +51,7 @@ public class SigninActivity extends AppCompatActivity {
         // Set events
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                LoginConfirm();
-            }
+            public void onClick(View v) { LoginConfirm(); }
         });
 
         tvRegister.setOnClickListener(new View.OnClickListener() {
