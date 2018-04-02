@@ -70,18 +70,18 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <Button
-                    android:id="@+id/btnIntro"
-                    style="@style/btn_ripple"
-                    android:layout_width="wrap_content"
-                    android:layout_height="20dp"
-                    android:layout_marginTop="8dp"
-                    android:gravity="top|center"
-                    android:text="@string/edit_intro"
-                    android:textSize="12sp"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvIntro" />
+                <!--<Button-->
+                    <!--android:id="@+id/btnIntro"-->
+                    <!--style="@style/btn_ripple"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="20dp"-->
+                    <!--android:layout_marginTop="8dp"-->
+                    <!--android:gravity="top|center"-->
+                    <!--android:text="@string/edit_intro"-->
+                    <!--android:textSize="12sp"-->
+                    <!--app:layout_constraintLeft_toLeftOf="parent"-->
+                    <!--app:layout_constraintRight_toRightOf="parent"-->
+                    <!--app:layout_constraintTop_toBottomOf="@+id/tvIntro" />-->
 
             </android.support.constraint.ConstraintLayout>
 

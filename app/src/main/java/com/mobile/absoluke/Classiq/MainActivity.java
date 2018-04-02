@@ -29,9 +29,9 @@ public class MainActivity extends AppCompatActivity {
     RoundedImage roundImageAvatar;
     FloatingActionButton fabAddPost;
 //
-//    //Firebase
-//    DatabaseReference mDatabase, notifyRef;
-//    FirebaseUser currentUser;
+    //Firebase
+    DatabaseReference mDatabase, notifyRef;
+    FirebaseUser currentUser;
 //
 //
 //    private int[] tabIcons = {

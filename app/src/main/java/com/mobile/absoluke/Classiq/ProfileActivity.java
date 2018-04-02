@@ -7,6 +7,7 @@ import android.graphics.PorterDuff;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -19,7 +20,10 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -29,6 +33,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
@@ -54,7 +59,7 @@ public class ProfileActivity extends AppCompatActivity {
     TextView tvUsername;
     TextView tvIntro;
     RoundedImage roundedImageChangeAvatar;
-    Button btnIntro;
+    //Button btnIntro;
     ImageButton btnRight;
     FloatingActionButton fabAddPost;
     ImageButton btnLeft;
@@ -77,9 +82,9 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
 
         createTabFragment();
-        //initFirabase();
+        initFirabase();
         matchComponents();
-        //loadDataFromFirebase();
+        loadDataFromFirebase();
     }
 
     private void createTabFragment(){
@@ -147,20 +152,23 @@ public class ProfileActivity extends AppCompatActivity {
         imageCover = findViewById(R.id.imageCover);
         tvUsername = findViewById(R.id.username);
         roundedImageChangeAvatar = findViewById(R.id.roundImageChangeAvatar);
-        btnIntro = findViewById(R.id.btnIntro);
+        //btnIntro = findViewById(R.id.btnIntro);
 
         // Set a click listener for the Popup Intro
-        btnIntro.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(ProfileActivity.this, PopupIntro.class));
-            }
-        });
+//        btnIntro.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(ProfileActivity.this, PopupIntro.class));
+//            }
+//        });
 
         // Thay đổi hình cho Avatar
         roundedImageChangeAvatar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (bundle != null)
+                    return;
+
                 Intent intent = new Intent()
                         .addCategory(Intent.CATEGORY_OPENABLE)
                         .setType("image/*")
@@ -174,6 +182,9 @@ public class ProfileActivity extends AppCompatActivity {
         imageCover.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (bundle != null)
+                    return;
+
                 Intent intent = new Intent()
                         .addCategory(Intent.CATEGORY_OPENABLE)
                         .setType("image/*")
@@ -214,6 +225,25 @@ public class ProfileActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
             roundedImageChangeAvatar.setImageBitmap(bitmap);
+            
+            //update on database and storge
+            StorageReference avatarRef = storageRef.child(userID).child("avatar_img");
+            byte[] avatarData = Tool.convertToBytes(roundedImageChangeAvatar);
+            final UploadTask uploadTaskAvatar = avatarRef.putBytes(avatarData);
+            uploadTaskAvatar.addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception exception) {
+                    Toast.makeText(ProfileActivity.this, R.string.update_avatar_fail, Toast.LENGTH_SHORT).show();
+                }
+            }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    //Update database
+                    curUserRef.child("avatarLink").setValue(taskSnapshot.getDownloadUrl().toString());
+
+                    Toast.makeText(ProfileActivity.this, R.string.update_avatar_success, Toast.LENGTH_SHORT).show();
+                }
+            });
         } else if (requestCode == REQUEST_CODE_FILE_COVER && resultCode == RESULT_OK && data != null) {
             Uri selectedfile = data.getData(); //The uri with the location of the file
             Bitmap bitmap = null;
@@ -223,68 +253,88 @@ public class ProfileActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
             imageCover.setImageBitmap(bitmap);
+
+            //update on database and storge
+            StorageReference coverRef = storageRef.child(userID).child("cover_img");
+            byte[] coverData = Tool.convertToBytes(imageCover);
+            final UploadTask uploadTaskCover = coverRef.putBytes(coverData);
+            uploadTaskCover.addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception exception) {
+                    Toast.makeText(ProfileActivity.this, R.string.update_cover_fail, Toast.LENGTH_SHORT).show();
+                }
+            }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    //Update database
+                    curUserRef.child("coverLink").setValue(taskSnapshot.getDownloadUrl().toString());
+
+                    Toast.makeText(ProfileActivity.this, R.string.update_cover_success, Toast.LENGTH_SHORT).show();
+                }
+            });
         }
 
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-//    private void initFirabase(){
-//        //Auth
-//        auth = FirebaseAuth.getInstance();
-//        currentUser = auth.getCurrentUser();
-//
-//        //Database
-//        mDatabase = FirebaseDatabase.getInstance().getReference();
-//
-//        //Storage
-//        storage = FirebaseStorage.getInstance("gs://travellie-5884f.appspot.com");
-//        storageRef = storage.getReference();
-//
-//        intent = getIntent();
-//        bundle = intent.getBundleExtra("BUNDLE");
-//
-//        tvIntro = findViewById(R.id.tvIntro);
-//        btnIntro = findViewById(R.id.btnIntro);
-//        btnRight = findViewById(R.id.btn_right);
-//
-//        if (bundle == null){
-//            userID = currentUser.getUid();
-//            btnRight.setVisibility(View.INVISIBLE);
-//        }
-//        else{
-//            userID = bundle.getString("ID");
-//            btnIntro.setVisibility(View.INVISIBLE);
-//        }
-//    }
-//
-//    private  void loadDataFromFirebase(){
-//        curUserRef = mDatabase.child("users_info").child(userID);
-//        curUserRef.addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//               userInfo = dataSnapshot.getValue(UserInfo.class);
+    private void initFirabase(){
+        //Auth
+        auth = FirebaseAuth.getInstance();
+        currentUser = auth.getCurrentUser();
+
+        //Database
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+
+        //Storage
+        storage = FirebaseStorage.getInstance();
+        storageRef = storage.getReference();
+
+        intent = getIntent();
+        bundle = intent.getBundleExtra("BUNDLE");
+
+        tvIntro = findViewById(R.id.tvIntro);
+        //btnIntro = findViewById(R.id.btnIntro);
+        btnRight = findViewById(R.id.btn_right);
+
+        if (bundle == null){
+            userID = currentUser.getUid();
+            btnRight.setVisibility(View.INVISIBLE);
+        }
+        else{
+            userID = bundle.getString("ID");
+            //btnIntro.setVisibility(View.INVISIBLE);
+        }
+    }
+
+    private  void loadDataFromFirebase(){
+        curUserRef = mDatabase.child("users_info").child(userID);
+        curUserRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+               userInfo = dataSnapshot.getValue(UserInfo.class);
 //               Log.i(TAG, "Avatar link: " + userInfo.getAvatarLink());
 //                Log.i(TAG, "User id: " + userInfo.getUserid());
-//
-//               //Load info to UI
-//                //-Load avatar and cover
-//                StorageReference avatarRef = storage.getReferenceFromUrl(userInfo.getAvatarLink());
-//                Log.i(TAG, "avatarRef: " + avatarRef);
-//
-//                Picasso.with(ProfileActivity.this).load(Uri.parse(userInfo.getAvatarLink())).into(roundedImageChangeAvatar);
-//
-//                Picasso.with(ProfileActivity.this).load(Uri.parse(userInfo.getCoverLink())).into(imageCover);
-//
-//                //-Load info
-//                String fullName = userInfo.getLastname() + " " + userInfo.getFirstname();
-//                tvUsername.setText(fullName);
-//                tvIntro.setText(userInfo.getDescription().toString());
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//
-//            }
-//        });
-//    }
+
+               //Load info to UI
+                //-Load avatar and cover
+                if (userInfo.getAvatarLink().toString() != "null")
+                    Picasso.with(ProfileActivity.this).load(Uri.parse(userInfo.getAvatarLink())).into(roundedImageChangeAvatar);
+                if (userInfo.getCoverLink().toString() != "null")
+                    Picasso.with(ProfileActivity.this).load(Uri.parse(userInfo.getCoverLink())).into(imageCover);
+
+                //-Load info
+                String fullName = userInfo.getLastname() + " " + userInfo.getFirstname();
+                tvUsername.setText(fullName);
+
+                //TO-DO: Ánh xạ theo mức rank. Có thể cần ImageView ở đây hơn là TextView
+                //tvIntro dưới đây chỉ là tạm thời
+                tvIntro.setText(String.valueOf(userInfo.getRank()));
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
 }

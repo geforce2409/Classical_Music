@@ -11,16 +11,42 @@
         android:id="@+id/btnRegisterConfirm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="88dp"
+        android:layout_marginBottom="20dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:text="Đăng ký"
-        app:layout_constraintBottom_toTopOf="@+id/txtBackSignin"
+        app:layout_constraintBottom_toTopOf="@+id/tvRegisterBackSignin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/txtRegisterEmail"
+        android:id="@+id/etRegisterLastName"
+        android:layout_width="262dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:ems="10"
+        android:hint="Last Name"
+        app:layout_constraintBottom_toTopOf="@+id/etRegisterEmail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/etRegisterFirstName"
+        android:layout_width="262dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:ems="10"
+        android:hint="First Name"
+        app:layout_constraintBottom_toTopOf="@+id/etRegisterLastName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/etRegisterEmail"
         android:layout_width="262dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -29,12 +55,14 @@
         android:ems="10"
         android:hint="Email"
         android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toTopOf="@+id/txtRegisterPassword"
+        app:layout_constraintBottom_toTopOf="@+id/etRegisterPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+
+
     <EditText
-        android:id="@+id/txtRegisterPassword"
+        android:id="@+id/etRegisterPassword"
         android:layout_width="263dp"
         android:layout_height="46dp"
         android:layout_marginBottom="8dp"
@@ -43,13 +71,13 @@
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/txtPasswordConfirm"
+        app:layout_constraintBottom_toTopOf="@+id/etRegisterPasswordConfirm"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/txtBackSignin"
+        android:id="@+id/tvRegisterBackSignin"
         android:layout_width="wrap_content"
         android:layout_height="25dp"
         android:layout_marginBottom="84dp"
@@ -62,7 +90,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/txtPasswordConfirm"
+        android:id="@+id/etRegisterPasswordConfirm"
         android:layout_width="263dp"
         android:layout_height="46dp"
         android:layout_marginBottom="24dp"
@@ -77,7 +105,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/txtSignUp"
+        android:id="@+id/tvRegisterSignUp"
         android:layout_width="121dp"
         android:layout_height="45dp"
         android:layout_marginBottom="8dp"
@@ -86,9 +114,11 @@
         android:layout_marginTop="8dp"
         android:text="Đăng ký"
         android:textSize="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/txtRegisterEmail"
+        app:layout_constraintBottom_toTopOf="@+id/etRegisterEmail"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.243" />
 
 </android.support.constraint.ConstraintLayout>

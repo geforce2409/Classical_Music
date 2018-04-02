@@ -24,6 +24,10 @@
     <string name="female">Female</string>
     <string name="other">Other</string>
     <string name="update_profile">Update profile</string>
+    <string name="wrong_password_confirm">Password confirm does not match</string>
+    <string name="wrong_password_length">Password must have more than 6 characters</string>
+    <string name="signup_success">Sign up successfully</string>
+    <string name="signup_fail">Sign up failed. Please try again</string>
 
     <string-array name="gender_list">
         <item>Male</item>
@@ -68,4 +72,10 @@
     <string name="notify_like">voted</string>
     <string name="notify_cmt">commented</string>
     <string name="notify_shared">shared</string>
+
+    <!--Strings related to profile-->
+    <string name="update_avatar_fail">Can not update your avatar. Please try again</string>
+    <string name="update_avatar_success">Update avatar successfully</string>
+    <string name="update_cover_fail">Can not update your cover. Please try again</string>
+    <string name="update_cover_success">Update cover successully</string>
 </resources>

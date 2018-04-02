@@ -23,6 +23,10 @@
     <string name="female">Nữ</string>
     <string name="other">Khác</string>
     <string name="update_profile">Cập nhật</string>
+    <string name="wrong_password_confirm"> Xác nhận mật khẩu không khớp</string>
+    <string name="wrong_password_length"> Password phải nhiều hơn 6 ký tự</string>
+    <string name="signup_success">Đăng ký thành công</string>
+    <string name="signup_fail">Đăng ký thất bại, vui lòng thử lại</string>
 
     <string-array name="gender_list">
         <item>Nam</item>
@@ -178,5 +182,10 @@
         completions."
     </string>
 
+    <!--Strings related to profile-->
+    <string name="update_avatar_fail">Không thể cập nhật ảnh đại diện</string>
+    <string name="update_avatar_success">Cập nhật ảnh đại diện thành công</string>
+    <string name="update_cover_fail">Không thể cập nhật ảnh bìa</string>
+    <string name="update_cover_success">Cập nhật ảnh bìa thành công</string>
 
 </resources>
