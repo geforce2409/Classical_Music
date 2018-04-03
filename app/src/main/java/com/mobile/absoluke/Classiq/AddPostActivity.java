@@ -76,8 +76,6 @@ public class AddPostActivity extends AppCompatActivity {
     ImageButton btnChoosePic;
     ImageButton btnGetLocation;
     ImageButton btnPost;
-    Spinner spnTag;
-    SmileRating ratingBar;
     boolean chosePic = false;
 
     //Firebase
@@ -133,7 +131,6 @@ public class AddPostActivity extends AppCompatActivity {
         btnChoosePic = findViewById(R.id.btnChoosePic);
         //btnGetLocation = findViewById(R.id.btnGetLocation);
         btnPost = findViewById(R.id.btnPost);
-        ratingBar = findViewById(R.id.ratingBar);
 
         //spnTag = findViewById(R.id.spinnerTag);
 
@@ -142,7 +139,7 @@ public class AddPostActivity extends AppCompatActivity {
         // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
-        spnTag.setAdapter(adapter);
+        // spnTag.setAdapter(adapter);
 //        spnTag.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 //            @Override
 //            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -180,38 +177,10 @@ public class AddPostActivity extends AppCompatActivity {
         btnPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Kiểm tra xem rating chưa
-                if (ratingBar.getRating() == 0) {
-                    Toast.makeText(AddPostActivity.this, R.string.rating_reminder, Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                //Kiểm tra xem chọn mục chưa?
-                POST_TYPE ptype = POST_TYPE.GENERAL;
-                switch (spnTag.getSelectedItemPosition())
-                {
-                    case 0:
-                        ptype = POST_TYPE.ENTERTAINMENT;
-                        break;
-                    case 1:
-                        ptype = POST_TYPE.FOOD;
-                        break;
-                    case 2:
-                        ptype = POST_TYPE.HOTEL;
-                        break;
-                    case 3:
-                        ptype = POST_TYPE.GENERAL;
-                        break;
-                }
-
-
-
 
                 //Push dữ liệu lên
                 //++status
                 String status = editText.getText().toString();
-                //++rating
-                int rating = ratingBar.getRating();
                 //++avatar link
                 String avatarLink = userInfo.getAvatarLink();
                 //++get timestamp
@@ -225,15 +194,13 @@ public class AddPostActivity extends AppCompatActivity {
                 newPost.setUserid(currentUser.getUid());
                 newPost.setUsername(currentUser.getDisplayName());
                 newPost.setContent(status);
-                newPost.setRating(rating);
                 newPost.setAvatarLink(avatarLink);
                 newPost.setTimestamp(timestamp);
                 newPost.setLikeCount(0);
                 newPost.setCmtCount(0);
-                newPost.setType(ptype);
 
                 //Push để lấy key trước
-                String postId = mDatabase.child("interactions/posts").child(currentUser.getUid()).push().getKey();
+                String postId = mDatabase.child("posts_awaiting").child(currentUser.getUid()).push().getKey();
                 newPost.setPostid(postId);
 
                 //Kiểm tra hình
@@ -241,23 +208,8 @@ public class AddPostActivity extends AppCompatActivity {
                 if (!chosePic){
                     newPost.addImageLink("noimage");
                     //Set value
-                    mDatabase.child("interactions/posts").child(currentUser.getUid()).child(newPost.getPostid()).setValue(newPost);
+                    mDatabase.child("posts_awaiting").child(currentUser.getUid()).child(newPost.getPostid()).setValue(newPost);
                     // Đồng thời cập nhật cho database ở tag tương ứng
-                    // ++Add vào newsfeed
-                    mDatabase.child("newsfeed/general").child(newPost.getPostid()).setValue(newPost);
-                    // ++Add vào tab tương ứng
-                    switch (newPost.getType())
-                    {
-                        case ENTERTAINMENT:
-                            mDatabase.child("newsfeed/entertainment").child(newPost.getPostid()).setValue(newPost);
-                            break;
-                        case FOOD:
-                            mDatabase.child("newsfeed/food").child(newPost.getPostid()).setValue(newPost);
-                            break;
-                        case HOTEL:
-                            mDatabase.child("newsfeed/hotel").child(newPost.getPostid()).setValue(newPost);
-                            break;
-                    }
 
                     //Thông báo post thành công
                     Toast.makeText(AddPostActivity.this, R.string.post_success, Toast.LENGTH_SHORT).show();
@@ -284,24 +236,8 @@ public class AddPostActivity extends AppCompatActivity {
 
                             if (counter == listImg.size() - 1){
                                 //Set value
-                                mDatabase.child("interactions/posts").child(currentUser.getUid()).child(newPost.getPostid()).setValue(newPost);
+                                mDatabase.child("posts_awaiting").child(currentUser.getUid()).child(newPost.getPostid()).setValue(newPost);
                                 // Đồng thời cập nhật cho database ở tag tương ứng
-                                // ++Add vào newsfeed
-                                mDatabase.child("newsfeed/general").child(newPost.getPostid()).setValue(newPost);
-                                // ++Add vào tab tương ứng
-                                switch (newPost.getType())
-                                {
-                                    case ENTERTAINMENT:
-                                        mDatabase.child("newsfeed/entertainment").child(newPost.getPostid()).setValue(newPost);
-                                        break;
-                                    case FOOD:
-                                        mDatabase.child("newsfeed/food").child(newPost.getPostid()).setValue(newPost);
-                                        break;
-                                    case HOTEL:
-                                        mDatabase.child("newsfeed/hotel").child(newPost.getPostid()).setValue(newPost);
-                                        break;
-
-                                }
 
                                 //Thông báo post thành công
                                 Toast.makeText(AddPostActivity.this, R.string.post_success, Toast.LENGTH_SHORT).show();
