@@ -1,5 +1,11 @@
 package com.mobile.absoluke.Classiq;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -35,11 +41,37 @@ public class SigninActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signin);
 
-        //Anh xa component
-        matchComponents();
+        /////////////////// Check Internet connection///////////////////////
 
-        //Init FirebaseAuth
-        mAuth = FirebaseAuth.getInstance();
+        if(!isConnected()) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Warning");
+            builder.setMessage("You are not connected to Internet!!!");
+
+            builder.setPositiveButton(R.string.permission_dialog_ok, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    // User cancelled the dialog
+                    startActivity(new Intent(android.provider.Settings.ACTION_SETTINGS));
+                    finish();
+                }
+            });
+
+            builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    // User cancelled the dialog
+                    finish();
+                }
+            });
+
+            builder.show();
+        }
+        else {
+            //Anh xa component
+            matchComponents();
+
+            //Init FirebaseAuth
+            mAuth = FirebaseAuth.getInstance();
+        }
     }
 
     private void matchComponents(){
@@ -80,5 +112,16 @@ public class SigninActivity extends AppCompatActivity {
                         }
                     }
                 });
+    }
+
+    //And outside the class define isConnected()
+
+    public boolean isConnected(){
+        ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Activity.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+        if (networkInfo != null && networkInfo.isConnected())
+            return true;
+        else
+            return false;
     }
 }
