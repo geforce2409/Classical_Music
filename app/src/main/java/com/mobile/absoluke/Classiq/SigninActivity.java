@@ -8,10 +8,10 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -30,7 +30,7 @@ public class SigninActivity extends AppCompatActivity {
 
     //Components
     Button btnLogin;
-    EditText edtEmail, edtPassword;
+    TextInputEditText edtEmail, edtPassword;
     Button btnSignUp;
 
     //Firebase
@@ -119,9 +119,6 @@ public class SigninActivity extends AppCompatActivity {
     public boolean isConnected(){
         ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Activity.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
-        if (networkInfo != null && networkInfo.isConnected())
-            return true;
-        else
-            return false;
+        return networkInfo != null && networkInfo.isConnected();
     }
 }
