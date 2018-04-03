@@ -10,7 +10,7 @@
         android:id="@+id/ivLogo"
         android:layout_width="224dp"
         android:layout_height="61dp"
-        android:layout_marginBottom="204dp"
+        android:layout_marginBottom="260dp"
         android:tint="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/etlLoginEmail"
         app:layout_constraintEnd_toEndOf="parent"
