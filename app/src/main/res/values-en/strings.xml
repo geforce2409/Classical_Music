@@ -78,4 +78,7 @@
     <string name="update_avatar_success">Update avatar successfully</string>
     <string name="update_cover_fail">Can not update your cover. Please try again</string>
     <string name="update_cover_success">Update cover successully</string>
+    <string name="password">Password</string>
+    <string name="sign_in">Sign in</string>
+    <string name="sign_up_login_screen">Create account</string>
 </resources>

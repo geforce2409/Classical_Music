@@ -6,12 +6,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+
 import tool.Tool;
 
 
@@ -24,7 +25,7 @@ public class SigninActivity extends AppCompatActivity {
     //Components
     Button btnLogin;
     EditText edtEmail, edtPassword;
-    TextView tvRegister;
+    Button btnSignUp;
 
     //Firebase
     FirebaseAuth mAuth;
@@ -43,10 +44,10 @@ public class SigninActivity extends AppCompatActivity {
 
     private void matchComponents(){
         //Match components
-        btnLogin = findViewById(R.id.btnLoginConfirm);
+        btnLogin = findViewById(R.id.btnSignIn);
         edtEmail = findViewById(R.id.etLoginEmail);
         edtPassword = findViewById(R.id.etLoginPassword);
-        tvRegister = findViewById(R.id.tvRegister);
+        btnSignUp = findViewById(R.id.btnSignUp);
 
         // Set events
         btnLogin.setOnClickListener(new View.OnClickListener() {
@@ -54,7 +55,7 @@ public class SigninActivity extends AppCompatActivity {
             public void onClick(View v) { LoginConfirm(); }
         });
 
-        tvRegister.setOnClickListener(new View.OnClickListener() {
+        btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Tool.changeActivity(SigninActivity.this, SignupActivity.class);
