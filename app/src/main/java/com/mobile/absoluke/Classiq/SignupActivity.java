@@ -32,7 +32,6 @@ public class SignupActivity extends AppCompatActivity {
     //Components
     Button btnRegister;
     EditText edtFirstName, edtLastName,edtEmail, edtPassword, edtPasswordConfirm;
-    TextView tvBack;
 
     //Firebase
     private FirebaseAuth mAuth;
@@ -65,13 +64,6 @@ public class SignupActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 RegisterConfirm();
-            }
-        });
-
-        tvBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Tool.changeActivity(SignupActivity.this, SigninActivity.class);
             }
         });
     }
