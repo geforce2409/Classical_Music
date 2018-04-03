@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="?attr/colorControlHighlight">
+
+    <!-- Use this to define the shape of the ripple effect (rectangle, oval, ring or line). The color specified here isn't used anyway -->
+    <item android:id="@android:id/mask">
+
+        <shape
+            android:padding="10dp"
+            android:shape="rectangle">
+
+            <solid android:color="@android:color/white" />
+            <corners android:radius="100dp" />
+
+        </shape>
+
+    </item>
+
+    <!-- This is the background for button -->
+    <item>
+        <!-- Use the shape you want here -->
+        <shape
+            android:padding="10dp"
+            android:shape="rectangle">
+            <!-- Use the solid tag to define the background color you want -->
+            <stroke
+                android:width="2dip"
+                android:color="@android:color/white" />
+            <corners android:radius="100dp" />
+
+        </shape>
+
+    </item>
+
+</ripple>

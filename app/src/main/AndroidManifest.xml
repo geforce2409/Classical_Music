@@ -46,6 +46,7 @@
                     tools:ignore="ManifestResource" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".SigninActivity">
             <intent-filter>

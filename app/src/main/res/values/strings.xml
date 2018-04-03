@@ -187,5 +187,10 @@
     <string name="update_avatar_success">Cập nhật ảnh đại diện thành công</string>
     <string name="update_cover_fail">Không thể cập nhật ảnh bìa</string>
     <string name="update_cover_success">Cập nhật ảnh bìa thành công</string>
+    <string name="email">Email</string>
+    <string name="password">Mật khẩu</string>
+    <string name="sign_in">Đăng nhập</string>
+    <string name="sign_up_login_screen">Tạo tài khoản</string>
+    <string name="sign_up">Đăng ký</string>
 
 </resources>

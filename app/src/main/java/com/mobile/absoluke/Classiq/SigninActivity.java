@@ -8,16 +8,17 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+
 import tool.Tool;
 
 
@@ -29,8 +30,8 @@ public class SigninActivity extends AppCompatActivity {
 
     //Components
     Button btnLogin;
-    EditText edtEmail, edtPassword;
-    TextView tvRegister;
+    TextInputEditText edtEmail, edtPassword;
+    Button btnSignUp;
 
     //Firebase
     FirebaseAuth mAuth;
@@ -75,10 +76,10 @@ public class SigninActivity extends AppCompatActivity {
 
     private void matchComponents(){
         //Match components
-        btnLogin = findViewById(R.id.btnLoginConfirm);
+        btnLogin = findViewById(R.id.btnSignIn);
         edtEmail = findViewById(R.id.etLoginEmail);
         edtPassword = findViewById(R.id.etLoginPassword);
-        tvRegister = findViewById(R.id.tvRegister);
+        btnSignUp = findViewById(R.id.btnSignUp);
 
         // Set events
         btnLogin.setOnClickListener(new View.OnClickListener() {
@@ -86,7 +87,7 @@ public class SigninActivity extends AppCompatActivity {
             public void onClick(View v) { LoginConfirm(); }
         });
 
-        tvRegister.setOnClickListener(new View.OnClickListener() {
+        btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Tool.changeActivity(SigninActivity.this, SignupActivity.class);
@@ -103,7 +104,7 @@ public class SigninActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
-                            Toast.makeText(SigninActivity.this, "Authentication successed.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SigninActivity.this, "Authentication successful.", Toast.LENGTH_SHORT).show();
                             Tool.changeActivity(SigninActivity.this, MainActivity.class);
                         } else {
                             // If sign in fails, display a message to the user.
@@ -118,9 +119,6 @@ public class SigninActivity extends AppCompatActivity {
     public boolean isConnected(){
         ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Activity.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
-        if (networkInfo != null && networkInfo.isConnected())
-            return true;
-        else
-            return false;
+        return networkInfo != null && networkInfo.isConnected();
     }
 }

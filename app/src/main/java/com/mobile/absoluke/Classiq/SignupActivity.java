@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -19,8 +20,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
-import tool.Tool;
 import dataobject.UserInfo;
+import tool.Tool;
 
 /**
  * Created by Yul Lucia on 03/19/2018.
@@ -58,7 +59,6 @@ public class SignupActivity extends AppCompatActivity {
         edtPassword = findViewById(R.id.etRegisterPassword);
         edtPasswordConfirm = findViewById(R.id.etRegisterPasswordConfirm);
         btnRegister = findViewById(R.id.btnRegisterConfirm);
-        tvBack = findViewById(R.id.tvRegisterBackSignin);
 
         // Set events
         btnRegister.setOnClickListener(new View.OnClickListener() {
