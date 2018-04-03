@@ -81,4 +81,5 @@
     <string name="password">Password</string>
     <string name="sign_in">Sign in</string>
     <string name="sign_up_login_screen">Create account</string>
+    <string name="sign_up">Join us</string>
 </resources>
