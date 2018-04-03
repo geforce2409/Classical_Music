@@ -14,6 +14,7 @@ public class Post {
     private String postid;
     private String content;
     private String avatarLink;
+    private String audioLink;
     private ArrayList<String> imageLinks;
     private String userid;
     private String username;
@@ -73,6 +74,12 @@ public class Post {
 
     public void setAvatarLink(String value) {
         avatarLink = value;
+    }
+
+    public String getAudioLink() { return audioLink; }
+
+    public void setAudioLink(String value) {
+        audioLink = value;
     }
 
     public ArrayList<String> getImageLinks() { return imageLinks; }
