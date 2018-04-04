@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:hint="@string/email"
-        android:theme="@style/SignInTextLabel"
+        android:theme="@style/SignInTextInputLayout"
         app:layout_constraintBottom_toTopOf="@+id/etlLoginPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -50,7 +50,7 @@
         app:passwordToggleTint="@color/selector_password_visibility_toggle"
         app:passwordToggleTintMode="src_atop"
         android:hint="@string/password"
-        android:theme="@style/SignInTextLabel"
+        android:theme="@style/SignInTextInputLayout"
         app:layout_constraintBottom_toTopOf="@+id/btnSignIn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
