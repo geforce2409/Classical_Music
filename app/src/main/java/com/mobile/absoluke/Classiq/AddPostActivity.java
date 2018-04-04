@@ -188,9 +188,6 @@ public class AddPostActivity extends AppCompatActivity {
                 //++get timestamp
                 long timestamp = Calendar.getInstance().getTimeInMillis();
 
-                //++Lấy ảnh
-                //--TO DO
-
                 final Post newPost = new Post();
                 newPost.init();
                 newPost.setUserid(currentUser.getUid());
@@ -202,94 +199,71 @@ public class AddPostActivity extends AppCompatActivity {
                 newPost.setCmtCount(0);
 
                 //Push để lấy key trước
-                String postId = mDatabase.child("posts_awaiting").child(currentUser.getUid()).push().getKey();
+                String postId = mDatabase.child("posts_awaiting").push().getKey();
                 newPost.setPostid(postId);
 
                 //Kiểm tra hình
-
                 if (!chosePic) {
-                    newPost.addImageLink("noimage");
-                    //Set value
-                    mDatabase.child("posts_awaiting").child(currentUser.getUid()).child(newPost.getPostid()).setValue(newPost);
-                    // Đồng thời cập nhật cho database ở tag tương ứng
-
-                    //Thông báo post thành công
-                    Toast.makeText(AddPostActivity.this, R.string.post_success, Toast.LENGTH_SHORT).show();
-
-                    // Trở về profile activity
-                    Tool.changeActivity(AddPostActivity.this, ProfileActivity.class);
-                    return;
+                    newPost.addImageLink("null");
                 }
+                else {
+                    counter = 0;
+                    final ArrayList<String> listImg = mImagesAdapter.getListImage();
+                    for (int i = 0; i < listImg.size(); i++) {
+                        Uri file = Uri.fromFile(new File(listImg.get(i)));
+                        UploadTask uploadTask = storageRef.child(currentUser.getUid()).child("posts").child(Tool.generateImageKey(newPost.getPostid()) + i).putFile(file);
+                        uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                            @Override
+                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                Uri link = taskSnapshot.getDownloadUrl();
 
-                counter = 0;
-                final ArrayList<String> listImg = mImagesAdapter.getListImage();
-                for (int i = 0; i < listImg.size(); i++) {
+                                // Thêm vào post
+                                newPost.addImageLink(link.toString());
+                                mDatabase.child("photos").child(currentUser.getUid()).push().setValue(taskSnapshot.getDownloadUrl().toString());
 
-                    Uri file = Uri.fromFile(new File(listImg.get(i)));
-                    UploadTask uploadTask = storageRef.child(currentUser.getUid()).child("posts").child(Tool.generateImageKey(newPost.getPostid()) + i).putFile(file);
-                    uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            Uri link = taskSnapshot.getDownloadUrl();
+                                // Nếu đã check image xong thì bắt đầu check audio.
+                                // Do đây là các hàm call back nên không thể tách riêng
+                                if (counter == listImg.size() - 1) {
+                                    //Kiểm tra audio
+                                    if (!choseAudio) {
+                                        newPost.setAudioLink("null");
+                                        //Set value
+                                        mDatabase.child("posts_awaiting").child(newPost.getPostid()).setValue(newPost);
 
-                            // Thêm vào post
-                            newPost.addImageLink(link.toString());
-                            mDatabase.child("photos").child(currentUser.getUid()).push().setValue(taskSnapshot.getDownloadUrl().toString());
+                                        //Thông báo post thành công
+                                        Toast.makeText(AddPostActivity.this, R.string.post_success, Toast.LENGTH_SHORT).show();
 
-                            if (counter == listImg.size() - 1) {
-                                //Set value
-                                mDatabase.child("posts_awaiting").child(currentUser.getUid()).child(newPost.getPostid()).setValue(newPost);
-                                // Đồng thời cập nhật cho database ở tag tương ứng
+                                        // Trở về profile activity
+                                        Tool.changeActivity(AddPostActivity.this, ProfileActivity.class);
+                                        return;
+                                    } else {
+                                        Uri file = audioFile;
+                                        UploadTask uploadTask = storageRef.child(currentUser.getUid()).child("posts").child(Tool.generateImageKey(newPost.getPostid())).putFile(file);
+                                        uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                                            @Override
+                                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                                Uri link = taskSnapshot.getDownloadUrl();
 
-                                //Thông báo post thành công
-                                Toast.makeText(AddPostActivity.this, R.string.post_success, Toast.LENGTH_SHORT).show();
+                                                // Thêm vào post
+                                                newPost.setAudioLink(link.toString());
+                                                mDatabase.child("audio").child(currentUser.getUid()).push().setValue(taskSnapshot.getDownloadUrl().toString());
 
-                                // Trở về profile activity
-                                Tool.changeActivity(AddPostActivity.this, ProfileActivity.class);
+                                                //Set value
+                                                mDatabase.child("posts_awaiting").child(newPost.getPostid()).setValue(newPost);
+
+                                                //Thông báo post thành công
+                                                Toast.makeText(AddPostActivity.this, R.string.post_success, Toast.LENGTH_SHORT).show();
+
+                                                // Trở về profile activity
+                                                Tool.changeActivity(AddPostActivity.this, ProfileActivity.class);
+                                            }
+                                        });
+                                    }
+                                }
+                                counter++;
                             }
-
-                            counter++;
-                        }
-                    });
-                }
-
-                //Kiểm tra audio
-
-                if (!choseAudio) {
-                    newPost.setAudioLink("noaudio");
-                    //Set value
-                    mDatabase.child("posts_awaiting").child(currentUser.getUid()).child(newPost.getPostid()).setValue(newPost);
-                    // Đồng thời cập nhật cho database ở tag tương ứng
-
-                    //Thông báo post thành công
-                    Toast.makeText(AddPostActivity.this, R.string.post_success, Toast.LENGTH_SHORT).show();
-
-                    // Trở về profile activity
-                    Tool.changeActivity(AddPostActivity.this, ProfileActivity.class);
-                    return;
-                } else {
-                    Uri file = audioFile;
-                    UploadTask uploadTask = storageRef.child(currentUser.getUid()).child("posts").child(Tool.generateImageKey(newPost.getPostid())).putFile(file);
-                    uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            Uri link = taskSnapshot.getDownloadUrl();
-
-                            // Thêm vào post
-                            newPost.setAudioLink(link.toString());
-                            mDatabase.child("audio").child(currentUser.getUid()).push().setValue(taskSnapshot.getDownloadUrl().toString());
-
-                            //Set value
-                            mDatabase.child("posts_awaiting").child(currentUser.getUid()).child(newPost.getPostid()).setValue(newPost);
-                            // Đồng thời cập nhật cho database ở tag tương ứng
-
-                            //Thông báo post thành công
-                            Toast.makeText(AddPostActivity.this, R.string.post_success, Toast.LENGTH_SHORT).show();
-
-                            // Trở về profile activity
-                            Tool.changeActivity(AddPostActivity.this, ProfileActivity.class);
-                        }
-                    });
+                        });
+                    }
                 }
             }
         });
