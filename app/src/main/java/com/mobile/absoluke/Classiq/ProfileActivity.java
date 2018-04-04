@@ -53,7 +53,6 @@ public class ProfileActivity extends AppCompatActivity {
     String userID;
 
 
-
     //Components
     ImageView imageCover;
     TextView tvUsername;
@@ -71,9 +70,8 @@ public class ProfileActivity extends AppCompatActivity {
     FirebaseStorage storage;
     StorageReference storageRef;
     private int[] tabIcons = {
-            R.drawable.location,
+            R.drawable.about,
             R.drawable.posts,
-            R.drawable.about
     };
 
     @Override
@@ -115,7 +113,6 @@ public class ProfileActivity extends AppCompatActivity {
         //Change TabItem icon color
         tabLayout.getTabAt(0).getIcon().setColorFilter(Color.BLACK, PorterDuff.Mode.SRC_IN);
         tabLayout.getTabAt(1).getIcon().setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_IN);
-        tabLayout.getTabAt(2).getIcon().setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_IN);
 
 
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -145,22 +142,12 @@ public class ProfileActivity extends AppCompatActivity {
     private void setupTabIcons() {
         tabLayout.getTabAt(0).setIcon(tabIcons[0]);
         tabLayout.getTabAt(1).setIcon(tabIcons[1]);
-        tabLayout.getTabAt(2).setIcon(tabIcons[2]);
     }
 
     private void matchComponents() {
         imageCover = findViewById(R.id.imageCover);
         tvUsername = findViewById(R.id.username);
         roundedImageChangeAvatar = findViewById(R.id.roundImageChangeAvatar);
-        //btnIntro = findViewById(R.id.btnIntro);
-
-        // Set a click listener for the Popup Intro
-//        btnIntro.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(new Intent(ProfileActivity.this, PopupIntro.class));
-//            }
-//        });
 
         // Thay đổi hình cho Avatar
         roundedImageChangeAvatar.setOnClickListener(new View.OnClickListener() {
