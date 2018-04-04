@@ -10,7 +10,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 
 public class PagerAdapter extends FragmentStatePagerAdapter {
 
-    String[] listFragment = {"FragmentAchievement", "FragmentSaved", "FragmentDetails"};
+    String[] listFragment = {"FragmentAchievement", "FragmentSaved"};
     public PagerAdapter(FragmentManager fm) {
         super(fm);
     }
@@ -27,11 +27,6 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
                 FragmentSaved fragmentSaved = new FragmentSaved();
 
                 return fragmentSaved;
-
-            case 2:
-                FragmentDetails fragmentDetails = new FragmentDetails();
-
-                return fragmentDetails;
         }
         return null;
     }

@@ -30,12 +30,12 @@
                 <!-- This is a custom left side button -->
                 <!--location filter-->
                 <ImageButton
-                    android:id="@+id/btn_left"
+                    android:id="@+id/btn_notification"
                     style="@style/Widget.AppCompat.ActionButton"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/location"
+                    android:src="@drawable/notification"
                     android:tint="@android:color/black" />
 
                 <!-- This is a custom center image -->
