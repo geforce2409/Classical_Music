@@ -192,5 +192,6 @@
     <string name="sign_in">Đăng nhập</string>
     <string name="sign_up_login_screen">Tạo tài khoản</string>
     <string name="sign_up">Đăng ký</string>
+    <string name="confirm_password">Nhập lại mật khẩu</string>
 
 </resources>

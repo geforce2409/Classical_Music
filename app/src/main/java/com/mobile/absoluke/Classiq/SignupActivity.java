@@ -2,11 +2,10 @@ package com.mobile.absoluke.Classiq;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -31,7 +30,7 @@ public class SignupActivity extends AppCompatActivity {
 
     //Components
     Button btnRegister;
-    EditText edtFirstName, edtLastName,edtEmail, edtPassword, edtPasswordConfirm;
+    TextInputEditText edtFirstName, edtLastName, edtEmail, edtPassword, edtPasswordConfirm;
 
     //Firebase
     private FirebaseAuth mAuth;

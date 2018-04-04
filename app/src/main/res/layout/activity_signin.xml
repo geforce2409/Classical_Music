@@ -23,7 +23,7 @@
         android:id="@+id/etlLoginEmail"
         android:layout_width="335dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="8dp"
         android:hint="@string/email"
         android:theme="@style/SignInTextLabel"
         app:layout_constraintBottom_toTopOf="@+id/etlLoginPassword"
@@ -33,11 +33,11 @@
         <android.support.design.widget.TextInputEditText
             android:id="@+id/etLoginEmail"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textEmailAddress"
-            android:textColorHighlight="#8f9ea8"
-            android:textColorHint="#8f9ea8" />
+            android:textColor="@color/white"
+            android:textColorHint="@color/et_sign_in" />
 
     </android.support.design.widget.TextInputLayout>
 
@@ -46,6 +46,9 @@
         android:layout_width="335dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@color/selector_password_visibility_toggle"
+        app:passwordToggleTintMode="src_atop"
         android:hint="@string/password"
         android:theme="@style/SignInTextLabel"
         app:layout_constraintBottom_toTopOf="@+id/btnSignIn"
@@ -58,8 +61,8 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPassword"
-            android:textColorHighlight="#8f9ea8"
-            android:textColorHint="#8f9ea8" />
+            android:textColor="@color/white"
+            android:textColorHint="@color/et_sign_in" />
 
     </android.support.design.widget.TextInputLayout>
 

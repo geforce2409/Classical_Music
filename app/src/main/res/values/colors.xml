@@ -11,4 +11,5 @@
     <color name="timestamp">#a0a3a7</color>
     <color name="comment_item">#eff0f2</color>
     <color name="line">#c0c0c0</color>
+    <color name="et_sign_in">#8f9ea8</color>
 </resources>
