@@ -21,6 +21,7 @@
         android:layout_height="@dimen/avatar_size"
         android:clickable="true"
         android:src="@drawable/img_placeholder"
+        app:backgroundTint="@android:color/transparent"
         app:layout_anchor="@+id/appbar"
         app:layout_anchorGravity="bottom|center_horizontal" />
 
