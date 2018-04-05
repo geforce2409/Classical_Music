@@ -2,7 +2,7 @@ package com.mobile.absoluke.Classiq;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -25,7 +25,7 @@ import dataobject.Notification;
  * Created by Yul Lucia on 12/31/2017.
  */
 
-public class NotificationActivity extends Fragment {
+public class NotificationActivity extends AppCompatActivity {
 
     //Firebase
     DatabaseReference mDatabase, notifyRef;
@@ -37,20 +37,20 @@ public class NotificationActivity extends Fragment {
     ArrayList<Notification> list;
     LinearLayoutManager layoutManager;
 
-
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View itemView = inflater.inflate(R.layout.activity_notification, container, false);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_notification);
+
         mDatabase = FirebaseDatabase.getInstance().getReference();
         currentUser = FirebaseAuth.getInstance().getCurrentUser();
 
-        recyvwNotify = itemView.findViewById(R.id.recyvwNotify);
+        recyvwNotify = findViewById(R.id.recyvwNotify);
         list = new ArrayList<>();
-        adapter = new NotificationAdapter(getContext(), list);
+        adapter = new NotificationAdapter(this, list);
 
         recyvwNotify.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(getContext());
+        layoutManager = new LinearLayoutManager(this);
 
         recyvwNotify.setLayoutManager(layoutManager);
 
@@ -85,7 +85,5 @@ public class NotificationActivity extends Fragment {
 
             }
         });
-
-        return itemView;
     }
 }

@@ -150,8 +150,8 @@ public class SignUpActivity extends AppCompatActivity {
                                 userInfo.setFirstname(edtFirstName.getText().toString());
                                 userInfo.setLastname(edtLastName.getText().toString());
                                 userInfo.setEmail(edtEmail.getText().toString());
-                                userInfo.setCoverLink("null");
-                                userInfo.setAvatarLink("null");
+                                userInfo.setCoverLink("https://firebasestorage.googleapis.com/v0/b/classiq-server.appspot.com/o/Default%20avatar%2Fno_cover.png?alt=media&token=f0f16cb5-a6e9-41bf-8366-1b48ce1ba39b");
+                                userInfo.setAvatarLink("https://firebasestorage.googleapis.com/v0/b/classiq-server.appspot.com/o/Default%20avatar%2Fimg_placeholder.png?alt=media&token=54494ecf-db27-4cba-b7ef-d930122305d1");
                                 userInfo.setRank(0);
 
                                 userInfo.setUserid(mAuth.getCurrentUser().getUid());

@@ -59,9 +59,7 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".AddPostActivity" />
-        <activity
-            android:name=".PopupIntro"
-            android:theme="@style/AppTheme.CustomPopupTheme" />
+        <activity android:name=".NotificationActivity" />
         <activity
             android:name=".PopupComment"
             android:theme="@style/PopupAnimation" />

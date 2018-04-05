@@ -14,6 +14,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     //Components
     RoundedImage roundImageAvatar;
     FloatingActionButton fabAddPost;
+    ImageButton btnNotification;
 
     //List post
     RecyclerView recyvwPosts;
@@ -68,10 +70,27 @@ public class MainActivity extends AppCompatActivity {
 
     private void matchComponents() {
         roundImageAvatar = findViewById(R.id.roundImageAvatar);
+        fabAddPost = findViewById(R.id.fabAddPost);
+        btnNotification = findViewById(R.id.btn_notification);
+
         roundImageAvatar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Tool.changeActivity(MainActivity.this, ProfileActivity.class);
+            }
+        });
+
+        fabAddPost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Tool.changeActivity(MainActivity.this, AddPostActivity.class);
+            }
+        });
+
+        btnNotification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Tool.changeActivity(MainActivity.this, NotificationActivity.class);
             }
         });
 
@@ -129,14 +148,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
-            }
-        });
-
-        fabAddPost = findViewById(R.id.fabAddPost);
-        fabAddPost.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Tool.changeActivity(MainActivity.this, AddPostActivity.class);
             }
         });
     }
