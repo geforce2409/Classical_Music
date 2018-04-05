@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
 
@@ -125,7 +124,7 @@
             style="@style/bottom_icon"
             android:layout_width="30dp"
             android:layout_marginStart="@dimen/feed_item_padding_left_right"
-            android:tint="@android:color/holo_green_dark"
+            android:tint="@android:color/darker_gray"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -192,15 +191,15 @@
         <ImageButton
             android:id="@+id/btnChooseAudio"
             style="@style/bottom_icon"
-            android:layout_width="30dp"
-            android:layout_height="0dp"
+            android:layout_width="25dp"
             android:layout_marginBottom="8dp"
             android:layout_marginStart="12dp"
             android:layout_marginTop="8dp"
+            android:tint="@android:color/darker_gray"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/btnChoosePic"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/about" />
+            app:srcCompat="@drawable/music" />
 
     </android.support.constraint.ConstraintLayout>
 
