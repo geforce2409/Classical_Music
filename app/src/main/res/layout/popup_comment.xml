@@ -87,7 +87,7 @@
         android:id="@+id/comment_section"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:background="@color/white"
+        android:background="@android:color/white"
         android:elevation="3dp"
         android:orientation="horizontal"
         android:translationZ="3dp"

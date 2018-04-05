@@ -14,9 +14,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -70,7 +68,7 @@ public class ProfileActivity extends AppCompatActivity {
     FirebaseStorage storage;
     StorageReference storageRef;
     private int[] tabIcons = {
-            R.drawable.about,
+            R.drawable.crown,
             R.drawable.posts,
     };
 
@@ -80,7 +78,7 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
 
         createTabFragment();
-        initFirabase();
+        initFirebase();
         matchComponents();
         loadDataFromFirebase();
     }
@@ -212,8 +210,8 @@ public class ProfileActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
             roundedImageChangeAvatar.setImageBitmap(bitmap);
-            
-            //update on database and storge
+
+            //update on database and store
             StorageReference avatarRef = storageRef.child(userID).child("avatar_img");
             byte[] avatarData = Tool.convertToBytes(roundedImageChangeAvatar);
             final UploadTask uploadTaskAvatar = avatarRef.putBytes(avatarData);
@@ -264,7 +262,7 @@ public class ProfileActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-    private void initFirabase(){
+    private void initFirebase() {
         //Auth
         auth = FirebaseAuth.getInstance();
         currentUser = auth.getCurrentUser();
@@ -304,9 +302,9 @@ public class ProfileActivity extends AppCompatActivity {
 
                //Load info to UI
                 //-Load avatar and cover
-                if (userInfo.getAvatarLink().toString() != "null")
+                if (userInfo.getAvatarLink() != "null")
                     Picasso.with(ProfileActivity.this).load(Uri.parse(userInfo.getAvatarLink())).into(roundedImageChangeAvatar);
-                if (userInfo.getCoverLink().toString() != "null")
+                if (userInfo.getCoverLink() != "null")
                     Picasso.with(ProfileActivity.this).load(Uri.parse(userInfo.getCoverLink())).into(imageCover);
 
                 //-Load info

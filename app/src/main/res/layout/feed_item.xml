@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:layout_marginBottom="@dimen/feed_item_padding_top_bottom"
     android:layout_marginTop="@dimen/feed_item_padding_top_bottom"
-    android:background="@color/white">
+    android:background="@android:color/white">
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/profile_panel"

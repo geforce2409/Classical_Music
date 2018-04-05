@@ -92,18 +92,18 @@
         <item name="android:textColorHint">@color/et_sign_in</item>
 
         <!--Label color in TRUE state-->
-        <item name="colorAccent">@color/white</item>
+        <item name="colorAccent">@android:color/white</item>
 
         <!--Bar color FALSE state-->
         <item name="colorControlNormal">@color/et_sign_in</item>
 
         <!--Bar color TRUE state-->
-        <item name="colorControlActivated">@color/white</item>
+        <item name="colorControlActivated">@android:color/white</item>
     </style>
 
     <style name="SignInTextInputEditText" parent="TextAppearance.AppCompat">
         <item name="android:ems">10</item>
-        <item name="android:textColor">@color/white</item>
+        <item name="android:textColor">@android:color/white</item>
         <item name="android:textColorHint">@color/et_sign_in</item>
     </style>
 
@@ -125,7 +125,7 @@
     </style>
 
     <style name="WhiteAccent" parent="ThemeOverlay.AppCompat.Light">
-        <item name="colorAccent">@color/white</item>
+        <item name="colorAccent">@android:color/white</item>
     </style>
 
 </resources>

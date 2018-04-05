@@ -38,7 +38,7 @@
                 android:gravity="center"
                 android:lines="2"
                 android:text="@string/reg_intro"
-                android:textColor="@color/white"
+                android:textColor="@android:color/white"
                 android:textSize="17sp"
                 app:layout_constraintBottom_toTopOf="@+id/etlRegisterEmail"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -64,7 +64,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:inputType="textEmailAddress"
-                    android:textColor="@color/white"
+                    android:textColor="@android:color/white"
                     android:textColorHint="@color/et_sign_in" />
 
             </android.support.design.widget.TextInputLayout>
@@ -90,7 +90,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:inputType="textPassword"
-                    android:textColor="@color/white"
+                    android:textColor="@android:color/white"
                     android:textColorHint="@color/et_sign_in" />
 
             </android.support.design.widget.TextInputLayout>
@@ -116,7 +116,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:inputType="textPassword"
-                    android:textColor="@color/white"
+                    android:textColor="@android:color/white"
                     android:textColorHint="@color/et_sign_in" />
 
             </android.support.design.widget.TextInputLayout>
@@ -141,7 +141,7 @@
                     android:layout_height="40dp"
                     android:ems="10"
                     android:inputType="text"
-                    android:textColor="@color/white"
+                    android:textColor="@android:color/white"
                     android:textColorHint="@color/et_sign_in" />
 
             </android.support.design.widget.TextInputLayout>
@@ -164,7 +164,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:inputType="text"
-                    android:textColor="@color/white"
+                    android:textColor="@android:color/white"
                     android:textColorHint="@color/et_sign_in" />
 
             </android.support.design.widget.TextInputLayout>

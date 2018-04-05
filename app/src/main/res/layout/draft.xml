@@ -9,7 +9,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
 
-        android:background="@color/white"
+        android:background="@android:color/white"
         android:elevation="1dp"
         android:orientation="horizontal"
         android:paddingEnd="@dimen/feed_item_padding_left_right"
@@ -111,7 +111,7 @@
         android:id="@+id/bottomPanel"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:background="@color/white"
+        android:background="@android:color/white"
         android:elevation="3dp"
         android:orientation="horizontal"
         android:translationZ="3dp"
