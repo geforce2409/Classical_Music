@@ -6,14 +6,12 @@
     <string name="facebook_app_id" translatable="false">122046885142484</string>
     <string name="fb_login_protocol_scheme" translatable="false">fb122046885142484</string>
 
-    <!-- Strings related to login -->
-    <string name="login_intro">
-        <font color="white">Khám phá những\nđiểm đến\ncực</font>
-        <font color="#f9d641">chất</font>
-    </string>
-    <string name="sub_intro">Cùng chia sẻ kinh nghiệm\nphượt thú vị hơn bao giờ hết\nvới Travelie</string>
+    <!-- Strings related to sign in -->
+    <string name="email">Email</string>
+    <string name="password">Mật khẩu</string>
+    <string name="sign_in">Đăng nhập</string>
 
-    <!-- Strings related to register -->
+    <!-- Strings related to sign up -->
     <string name="reg_intro">Sắp xong rồi. Cập nhật\ntrang cá nhân của bạn để bắt đầu nào.</string>
     <string name="first_name">Tên</string>
     <string name="last_name">Họ</string>
@@ -23,10 +21,15 @@
     <string name="female">Nữ</string>
     <string name="other">Khác</string>
     <string name="update_profile">Cập nhật</string>
-    <string name="wrong_password_confirm"> Xác nhận mật khẩu không khớp</string>
-    <string name="wrong_password_length"> Password phải nhiều hơn 6 ký tự</string>
-    <string name="signup_success">Đăng ký thành công</string>
-    <string name="signup_fail">Đăng ký thất bại, vui lòng thử lại</string>
+    <string name="invalid_password_confirm"> Xác nhận mật khẩu không khớp</string>
+    <string name="sign_up_success">Đăng ký thành công</string>
+    <string name="sign_up_fail">Đăng ký thất bại, vui lòng thử lại</string>
+    <string name="sign_up_login_screen">Tạo tài khoản</string>
+    <string name="sign_up">Đăng ký</string>
+    <string name="confirm_password">Nhập lại mật khẩu</string>
+    <string name="invalid_email">Email không hợp lệ</string>
+    <string name="invalid_password">Mật khẩu phải nhiều hơn 6 ký tự</string>
+    <string name="required_field">Ô này chưa điền này</string>
 
     <string-array name="gender_list">
         <item>Nam</item>
@@ -169,29 +172,10 @@
     <string name="notify_shared">chia sẻ</string>
     <string name="title_activity_login_email">Sign in</string>
 
-    <!-- Strings related to login -->
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password (optional)</string>
-    <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="error_invalid_email">This email address is invalid</string>
-    <string name="error_invalid_password">This password is too short</string>
-    <string name="error_incorrect_password">This password is incorrect</string>
-    <string name="error_field_required">This field is required</string>
-    <string name="permission_rationale">"Contacts permissions are needed for providing email
-        completions."
-    </string>
-
     <!--Strings related to profile-->
     <string name="update_avatar_fail">Không thể cập nhật ảnh đại diện</string>
     <string name="update_avatar_success">Cập nhật ảnh đại diện thành công</string>
     <string name="update_cover_fail">Không thể cập nhật ảnh bìa</string>
     <string name="update_cover_success">Cập nhật ảnh bìa thành công</string>
-    <string name="email">Email</string>
-    <string name="password">Mật khẩu</string>
-    <string name="sign_in">Đăng nhập</string>
-    <string name="sign_up_login_screen">Tạo tài khoản</string>
-    <string name="sign_up">Đăng ký</string>
-    <string name="confirm_password">Nhập lại mật khẩu</string>
 
 </resources>

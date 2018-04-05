@@ -7,14 +7,11 @@
     <string name="facebook_app_id">122046885142484</string>
     <string name="fb_login_protocol_scheme">fb122046885142484</string>
 
-    <!-- Strings related to login -->
-    <string name="login_intro">
-        <font color="white">Find incredible\nplaces you\nwill</font>
-        <font color="#f9d641">love</font>
-    </string>
-    <string name="sub_intro">Explore the world searching\nby location, interests and\nmore on the go.</string>
+    <!-- Strings related to sign in -->
+    <string name="password">Password</string>
+    <string name="sign_in">Sign in</string>
 
-    <!-- Strings related to register -->
+    <!-- Strings related to sign up -->
     <string name="reg_intro">Almost there. Update your\nprofile to expand your network.</string>
     <string name="first_name">First name</string>
     <string name="last_name">Last name</string>
@@ -24,10 +21,14 @@
     <string name="female">Female</string>
     <string name="other">Other</string>
     <string name="update_profile">Update profile</string>
-    <string name="wrong_password_confirm">Password confirm does not match</string>
-    <string name="wrong_password_length">Password must have more than 6 characters</string>
-    <string name="signup_success">Sign up successfully</string>
-    <string name="signup_fail">Sign up failed. Please try again</string>
+    <string name="sign_up_success">Sign up successfully</string>
+    <string name="sign_up_fail">Sign up failed. Please try again</string>
+    <string name="sign_up_login_screen">Create account</string>
+    <string name="sign_up">Join us</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="invalid_email">This email address is invalid</string>
+    <string name="invalid_password">Your password must have more than 6 characters</string>
+    <string name="required_field">This field is required</string>
 
     <string-array name="gender_list">
         <item>Male</item>
@@ -78,9 +79,4 @@
     <string name="update_avatar_success">Update avatar successfully</string>
     <string name="update_cover_fail">Can not update your cover. Please try again</string>
     <string name="update_cover_success">Update cover successully</string>
-    <string name="password">Password</string>
-    <string name="sign_in">Sign in</string>
-    <string name="sign_up_login_screen">Create account</string>
-    <string name="sign_up">Join us</string>
-    <string name="confirm_password">Confirm password</string>
 </resources>
