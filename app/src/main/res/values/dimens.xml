@@ -25,4 +25,5 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="round_edittext_padding">12dp</dimen>
     <dimen name="imgbtn_size">20dp</dimen>
+    <dimen name="badge_text_size">12sp</dimen>
 </resources>
