@@ -69,7 +69,7 @@ public class ProfileActivity extends AppCompatActivity {
     StorageReference storageRef;
     private int[] tabIcons = {
             R.drawable.crown,
-            R.drawable.posts,
+            R.drawable.star,
     };
 
     @Override
@@ -108,7 +108,7 @@ public class ProfileActivity extends AppCompatActivity {
         tabLayout.setTabsFromPagerAdapter(pagerAdapter);
         setupTabIcons();
 
-        //Change TabItem icon color
+        // Change TabItem icon color
         tabLayout.getTabAt(0).getIcon().setColorFilter(Color.BLACK, PorterDuff.Mode.SRC_IN);
         tabLayout.getTabAt(1).getIcon().setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_IN);
 
@@ -123,16 +123,15 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
                 //for removing the color of first icon when switched to next tab
-                tabLayout.getTabAt(0).getIcon().clearColorFilter();
+                tabLayout.getTabAt(0).getIcon().setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_IN);
                 //for other tabs
-                tab.getIcon().clearColorFilter();
+                tab.getIcon().setColorFilter(Color.GRAY, PorterDuff.Mode.SRC_IN);
 
             }
 
-            //            Let it empty
+            // Let it empty
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
-
             }
         });
     }

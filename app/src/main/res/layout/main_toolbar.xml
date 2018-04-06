@@ -27,7 +27,6 @@
                 android:layout_height="match_parent">
 
                 <!-- This is a custom left side button -->
-                <!--location filter-->
                 <ImageButton
                     android:id="@+id/btn_notification"
                     style="@style/Widget.AppCompat.ActionButton"

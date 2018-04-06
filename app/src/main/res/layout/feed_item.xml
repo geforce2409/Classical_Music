@@ -20,20 +20,13 @@
         <ImageButton
             android:id="@+id/imgbtnOption"
             style="@style/bottom_icon"
-            android:layout_width="20dp"
+            android:layout_width="15dp"
             android:layout_marginEnd="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/more" />
 
-        <ImageView
-            android:id="@+id/ivRating"
-            android:layout_width="20dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="45dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
     </android.support.constraint.ConstraintLayout>
 
     <android.support.constraint.ConstraintLayout

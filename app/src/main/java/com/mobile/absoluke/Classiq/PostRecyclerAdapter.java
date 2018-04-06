@@ -139,24 +139,6 @@ public class PostRecyclerAdapter extends RecyclerView.Adapter<PostRecyclerAdapte
             }
         });
 
-        switch(listPost.get(position).getRating()){
-            case 1:
-                viewHolder.ivRating.setImageResource(R.drawable.terrible);
-                break;
-            case 2:
-                viewHolder.ivRating.setImageResource(R.drawable.bad);
-                break;
-            case 3:
-                viewHolder.ivRating.setImageResource(R.drawable.ok);
-                break;
-            case 4:
-                viewHolder.ivRating.setImageResource(R.drawable.good);
-                break;
-            case 5:
-                viewHolder.ivRating.setImageResource(R.drawable.great);
-                break;
-        }
-
         // Lấy ảnh nếu có
         if (!listPost.get(position).getImageLinks().get(0).equals("noimage")){
             viewHolder.imgAdapter = new ImageLinkAdapter(viewHolder.itemView.getContext(), listPost.get(position).getImageLinks());
@@ -309,7 +291,6 @@ public class PostRecyclerAdapter extends RecyclerView.Adapter<PostRecyclerAdapte
         ImageButton imgbtnCmt;
         ImageButton imgbtnShare;
         LikeButton imgbtnLike;
-        ImageView ivRating;
         RecyclerView recyclerViewImages;
         ImageLinkAdapter imgAdapter;
         GridLayoutManager gridLayoutManager;
@@ -326,7 +307,6 @@ public class PostRecyclerAdapter extends RecyclerView.Adapter<PostRecyclerAdapte
             imgbtnCmt = itemView.findViewById(R.id.imgbtnCmt);
             imgbtnShare = itemView.findViewById(R.id.imgbtnShare);
             imgbtnLike = itemView.findViewById(R.id.imgbtnLike);
-            ivRating = itemView.findViewById(R.id.ivRating);
             recyclerViewImages = itemView.findViewById(R.id.recycler_view_images);
             gridLayoutManager = new GridLayoutManager(itemView.getContext(), 2);
             recyclerViewImages.setHasFixedSize(true);
