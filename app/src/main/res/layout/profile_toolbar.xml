@@ -42,6 +42,8 @@
                     style="@style/Widget.AppCompat.ActionButton"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
+                    android:background="?attr/selectableItemBackground"
+                    android:foreground="?attr/selectableItemBackground"
                     android:scaleType="fitCenter"
                     android:src="@drawable/left_arrow"
                     android:tint="@android:color/black" />

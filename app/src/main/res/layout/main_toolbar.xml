@@ -32,6 +32,8 @@
                     style="@style/Widget.AppCompat.ActionButton"
                     android:layout_width="45dp"
                     android:layout_height="45dp"
+                    android:background="?attr/selectableItemBackground"
+                    android:foreground="?attr/selectableItemBackground"
                     android:scaleType="fitCenter"
                     android:src="@drawable/notification"
                     android:tint="@android:color/darker_gray"
@@ -90,4 +92,5 @@
             </android.support.constraint.ConstraintLayout>
         </android.support.v7.widget.Toolbar>
     </android.support.design.widget.CollapsingToolbarLayout>
+
 </android.support.design.widget.AppBarLayout>
