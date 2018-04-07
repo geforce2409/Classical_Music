@@ -20,13 +20,20 @@
         <ImageButton
             android:id="@+id/imgbtnOption"
             style="@style/bottom_icon"
-            android:layout_width="15dp"
+            android:layout_width="@dimen/imgbtn_size"
             android:layout_marginEnd="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/more" />
 
+        <ImageView
+            android:id="@+id/ivRating"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="45dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
     </android.support.constraint.ConstraintLayout>
 
     <android.support.constraint.ConstraintLayout
@@ -40,16 +47,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profile_panel">
 
-        <TextView
+        <com.borjabravo.readmoretextview.ReadMoreTextView
             android:id="@+id/tvContent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:maxLines="5"
             android:paddingEnd="@dimen/feed_item_padding_left_right"
             android:paddingStart="@dimen/feed_item_padding_left_right"
-            android:text="Content here"
+            android:text="@string/large_text"
             android:textSize="@dimen/feed_item_profile_name"
+            app:colorClickableText="@android:color/darker_gray"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:trimCollapsedText="Read less"
+            app:trimExpandedText="Read more"
+            app:trimLength="160"
+            app:trimMode="trimModeLength" />
 
         <include
             android:id="@+id/Gallery"
