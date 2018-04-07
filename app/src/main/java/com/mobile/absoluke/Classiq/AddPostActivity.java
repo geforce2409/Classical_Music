@@ -191,7 +191,7 @@ public class AddPostActivity extends AppCompatActivity {
                 final Post newPost = new Post();
                 newPost.init();
                 newPost.setUserid(currentUser.getUid());
-                newPost.setUsername(currentUser.getDisplayName());
+                newPost.setUsername(tvUsername.getText().toString());
                 newPost.setContent(status);
                 newPost.setAvatarLink(avatarLink);
                 newPost.setTimestamp(timestamp);

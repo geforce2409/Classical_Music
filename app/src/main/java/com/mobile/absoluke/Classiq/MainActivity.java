@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -25,6 +26,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
+import dataobject.Notification;
 import dataobject.Post;
 import dataobject.UserInfo;
 import tool.Tool;
@@ -129,9 +131,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 int counter = 0;
-                for(DataSnapshot data:dataSnapshot.getChildren()){
-                    if (counter == 0)
-                    {
+                for (DataSnapshot data : dataSnapshot.getChildren()) {
+                    if (counter == 0) {
                         keystart = data.getKey();
                     }
                     listPost.add(data.getValue(Post.class));
@@ -139,6 +140,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 adapter.notifyDataSetChanged();
             }
+
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
@@ -146,13 +148,13 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void initRecyclerView(){
+    public void initRecyclerView() {
 
         recyvwPosts.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
 
         recyvwPosts.setLayoutManager(layoutManager);
-        final LinearLayoutManager recyclerLayout = (LinearLayoutManager)recyvwPosts.getLayoutManager();
+        final LinearLayoutManager recyclerLayout = (LinearLayoutManager) recyvwPosts.getLayoutManager();
 //        recyvwPosts.setOnScrollChangeListener(new View.OnScrollChangeListener() {
 //            @Override
 //            public void onScrollChange(View view, int i, int i1, int i2, int i3) {
@@ -171,8 +173,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                 // Nếu đã đến cuối list thì load tiếp
-                if (!isLoading && ((lastVisibleItem + itemPerTurn) >= totalItem))
-                {
+                if (!isLoading && ((lastVisibleItem + itemPerTurn) >= totalItem)) {
                     isLoading = true;
                     //Toast.makeText(getActivity(), "Load more", Toast.LENGTH_SHORT).show();
                     // tiếp tục load từ firebase
@@ -184,7 +185,7 @@ public class MainActivity extends AppCompatActivity {
                             long length = dataSnapshot.getChildrenCount();
                             Log.i("LIST", "length " + length);
                             if (length == 1) return;
-                            for(DataSnapshot data:dataSnapshot.getChildren()) {
+                            for (DataSnapshot data : dataSnapshot.getChildren()) {
 
 
                                 if (counter == 0) {
@@ -222,24 +223,29 @@ public class MainActivity extends AppCompatActivity {
 
         //setting the adapter
         recyvwPosts.setAdapter(adapter);
+
+
+        notifyRef = mDatabase.child("notifications").
+                child(currentUser.getUid());
+        notifyRef.orderByKey().
+
+                limitToLast(1).
+
+                addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        if (dataSnapshot.exists()) {
+                            for (DataSnapshot data : dataSnapshot.getChildren()) {
+                                Notification notify = data.getValue(Notification.class);
+                                Toast.makeText(MainActivity.this, notify.getSenderName() + " đã thích bài viết", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
     }
 }
-
-////        notifyRef = mDatabase.child("notifications").child(currentUser.getUid());
-////        notifyRef.orderByKey().limitToLast(1).addValueEventListener(new ValueEventListener() {
-////            @Override
-////            public void onDataChange(DataSnapshot dataSnapshot) {
-////                if (dataSnapshot.exists()){
-////                    for(DataSnapshot data:dataSnapshot.getChildren()){
-////                        Notification notify = data.getValue(Notification.class);
-////                        Toast.makeText(MainActivity.this, notify.getSenderName() + " đã thích bài viết", Toast.LENGTH_SHORT).show();
-////                    }
-////                }
-////            }
-////
-////            @Override
-////            public void onCancelled(DatabaseError databaseError) {
-////
-////            }
-////        });
-//

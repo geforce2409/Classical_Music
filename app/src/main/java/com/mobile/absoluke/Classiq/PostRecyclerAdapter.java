@@ -177,7 +177,7 @@ public class PostRecyclerAdapter extends RecyclerView.Adapter<PostRecyclerAdapte
                 // ++Nếu ko thì thêm vào notification của người tạo post
                 Notification newNoti = new Notification();
                 newNoti.setAvatarLink(userInfo.getAvatarLink());
-                newNoti.setSenderName(currentUser.getDisplayName());
+                newNoti.setSenderName(userInfo.getFirstname().toString() + " " + userInfo.getLastname().toString());
                 newNoti.setType(INTERACTION_TYPE.LIKE);
                 newNoti.setPostid(listPost.get(position).getPostid());
                 String nid = mDatabase.child("notifications").child(listPost.get(position).getUserid()).push().getKey();
