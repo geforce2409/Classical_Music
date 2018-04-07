@@ -52,7 +52,7 @@
                     android:text="0"
                     android:textColor="@android:color/white"
                     android:textSize="12sp"
-                    android:visibility="visible"
+                    android:visibility="gone"
                     app:layout_constraintStart_toStartOf="@+id/btn_notification"
                     app:layout_constraintTop_toTopOf="@+id/btn_notification" />
 
