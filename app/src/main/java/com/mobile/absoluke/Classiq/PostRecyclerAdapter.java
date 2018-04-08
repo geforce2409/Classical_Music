@@ -289,11 +289,6 @@ public class PostRecyclerAdapter extends RecyclerView.Adapter<PostRecyclerAdapte
                         avaLink = post.getAvatarLink();
                         content = post.getContent();
                         imgLinks = post.getImageLinks();
-
-//                        audioLink = mDatabase.child("interactions/saved").push().toString();
-//                        avaLink = mDatabase.child("interactions/saved").push().toString();
-//                        content = mDatabase.child("interactions/saved").push().toString();
-//                        imgLinks = mDatabase.child("interactions/saved").child("imageLinks").push();
                     }
 
                     @Override
