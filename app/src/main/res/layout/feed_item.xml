@@ -109,6 +109,7 @@
             app:layout_constraintEnd_toStartOf="@+id/imgbtnLike"
             app:layout_constraintTop_toTopOf="parent"
             app:icon_type="star"
+            app:like_drawable="@drawable/stared"
             app:unlike_drawable="@drawable/star" />
 
         <!--<ImageButton-->
