@@ -1,5 +1,7 @@
 package com.mobile.absoluke.Classiq;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -194,6 +196,32 @@ public class ProfileActivity extends AppCompatActivity {
                 Tool.changeActivity(ProfileActivity.this, MainActivity.class);
             }
         });
+
+        btnRight = findViewById(R.id.btn_right);
+        btnRight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(ProfileActivity.this);
+                builder.setTitle("Signing Out");
+                builder.setMessage("Are you sure you want to sign out?");
+
+                builder.setPositiveButton(R.string.permission_dialog_ok, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // User signed out
+                        FirebaseAuth.getInstance().signOut();
+                        Tool.changeActivity(ProfileActivity.this, SigninActivity.class);
+                    }
+                });
+
+                builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+
+                    }
+                });
+                builder.show();
+
+            }
+        });
     }
 
     // Lấy hình vừa chọn gán vào
@@ -282,10 +310,11 @@ public class ProfileActivity extends AppCompatActivity {
 
         if (bundle == null){
             userID = currentUser.getUid();
-            btnRight.setVisibility(View.INVISIBLE);
+            //btnRight.setVisibility(View.INVISIBLE);
         }
         else{
             userID = bundle.getString("ID");
+            btnRight.setVisibility(View.INVISIBLE);
             //btnIntro.setVisibility(View.INVISIBLE);
         }
     }
