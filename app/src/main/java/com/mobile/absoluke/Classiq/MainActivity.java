@@ -225,12 +225,8 @@ public class MainActivity extends AppCompatActivity {
         recyvwPosts.setAdapter(adapter);
 
 
-        notifyRef = mDatabase.child("notifications").
-                child(currentUser.getUid());
-        notifyRef.orderByKey().
-
-                limitToLast(1).
-
+        notifyRef = mDatabase.child("notifications").child(currentUser.getUid());
+        notifyRef.orderByKey().limitToLast(1).
                 addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {

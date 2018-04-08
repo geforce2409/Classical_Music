@@ -33,12 +33,13 @@ public class Post {
         //default constructor for firebase
     }
 
-    public Post(String ctn, String avaLink, ArrayList<String> imglinks, String uid, String uname, long ts, List<String> lk,
+    public Post(String ctn, String avaLink, String audLink, ArrayList<String> imglinks, String uid, String uname, long ts, List<String> lk,
                 List<String> tg, List<String> lik, List<String> shrs, List<String> cmts, POST_TYPE tp, int rt){
         links = new ArrayList<>();
         //postid = pid;
         content = ctn;
         avatarLink = avaLink;
+        audioLink = audLink;
         imageLinks = imglinks;
         userid = uid;
         username = uname;

@@ -5,15 +5,18 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -34,11 +37,13 @@ import dataobject.INTERACTION_TYPE;
 import dataobject.Like;
 import dataobject.Notification;
 import dataobject.Post;
+import dataobject.Save;
 import dataobject.UserInfo;
 import tool.Tool;
 
 /**
  * Created by tranminhquan on 11/15/2017.
+ * Modified by Yul Lucia on 04/08/2018.
  */
 
 public class PostRecyclerAdapter extends RecyclerView.Adapter<PostRecyclerAdapter.RecyclerViewHolder>{
@@ -50,6 +55,8 @@ public class PostRecyclerAdapter extends RecyclerView.Adapter<PostRecyclerAdapte
     private FirebaseAuth auth;
     private FirebaseUser currentUser;
 
+    String audioLink, avaLink, content;
+    ArrayList<String> imgLinks;
 
     public PostRecyclerAdapter(Context context, List<Post> lstPost){
         this.context = context;
@@ -118,6 +125,22 @@ public class PostRecyclerAdapter extends RecyclerView.Adapter<PostRecyclerAdapte
             }
         });
 
+        mDatabase.child("interactions/saved").child(currentUser.getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot data : dataSnapshot.getChildren()) {
+                    Save s = data.getValue(Save.class);
+                    if (s.getPostid().equals(listPost.get(position).getPostid()))
+                        viewHolder.imgbtnSave.setLiked(true);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
         Uri link = Uri.parse(listPost.get(position).getAvatarLink());
         Picasso.with(context).load(link).into(viewHolder.roundedImageAvatar);
         viewHolder.tvUseranme.setText(listPost.get(position).getUsername());
@@ -140,7 +163,7 @@ public class PostRecyclerAdapter extends RecyclerView.Adapter<PostRecyclerAdapte
         });
 
         // Lấy ảnh nếu có
-        if (!listPost.get(position).getImageLinks().get(0).equals("noimage")){
+        if (!listPost.get(position).getImageLinks().get(0).equals("noimage")) {
             viewHolder.imgAdapter = new ImageLinkAdapter(viewHolder.itemView.getContext(), listPost.get(position).getImageLinks());
             viewHolder.recyclerViewImages.setAdapter(viewHolder.imgAdapter);
         }
@@ -156,7 +179,7 @@ public class PostRecyclerAdapter extends RecyclerView.Adapter<PostRecyclerAdapte
                 newLike.setPostid(listPost.get(position).getPostid());
                 newLike.setTimestamp(Calendar.getInstance().getTimeInMillis());
                 newLike.setUserid(currentUser.getUid());
-                newLike.setUsername(currentUser.getDisplayName());
+                newLike.setUsername(userInfo.getFirstname().toString() + " " + userInfo.getLastname().toString());
 
                 //listPost.get(position).increaseLike();
                 //int count = listPost.get(position).getLikeCount();
@@ -197,23 +220,23 @@ public class PostRecyclerAdapter extends RecyclerView.Adapter<PostRecyclerAdapte
                         .child(listPost.get(position).getPostid())
                         .orderByChild("userid").equalTo(idToRemove)
                         .addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        //Like rlike = dataSnapshot.getValue(Like.class);
-                        //Toast.makeText(context, "Your like id is " + rlike.getLikeid(), Toast.LENGTH_SHORT).show();
-                        for (DataSnapshot data : dataSnapshot.getChildren()) {
-                            mDatabase.child("interactions/likes")
-                                    .child(listPost.get(position).getPostid())
-                                    .child(data.getKey()).removeValue();
-                            viewHolder.imgbtnLike.setLiked(false);
-                        }
-                    }
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                //Like rlike = dataSnapshot.getValue(Like.class);
+                                //Toast.makeText(context, "Your like id is " + rlike.getLikeid(), Toast.LENGTH_SHORT).show();
+                                for (DataSnapshot data : dataSnapshot.getChildren()) {
+                                    mDatabase.child("interactions/likes")
+                                            .child(listPost.get(position).getPostid())
+                                            .child(data.getKey()).removeValue();
+                                    viewHolder.imgbtnLike.setLiked(false);
+                                }
+                            }
 
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
 
-                    }
-                });
+                            }
+                        });
 
                 // Giảm like
                 DatabaseReference postRef = mDatabase.child("interactions/posts").child(listPost.get(position).getUserid())
@@ -254,15 +277,77 @@ public class PostRecyclerAdapter extends RecyclerView.Adapter<PostRecyclerAdapte
             }
         });
 
-        viewHolder.imgbtnCmt.setOnClickListener(new View.OnClickListener() {
+        //--TO DO: Saved Posts
+        viewHolder.imgbtnSave.setOnLikeListener(new OnLikeListener() {
             @Override
-            public void onClick(View v) {
-                //--TO DO: Popup comment
+            public void liked(LikeButton saveButton) {
+                mDatabase.child("posts_awaiting").child(listPost.get(position).getPostid()).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        Post post = dataSnapshot.getValue(Post.class);
+                        audioLink = post.getAudioLink();
+                        avaLink = post.getAvatarLink();
+                        content = post.getContent();
+                        imgLinks = post.getImageLinks();
 
+//                        audioLink = mDatabase.child("interactions/saved").push().toString();
+//                        avaLink = mDatabase.child("interactions/saved").push().toString();
+//                        content = mDatabase.child("interactions/saved").push().toString();
+//                        imgLinks = mDatabase.child("interactions/saved").child("imageLinks").push();
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
+                //Toast.makeText(context, "You like post " + listPost.get(position).getContent(), Toast.LENGTH_SHORT).show();
+                Save newSave = new Save();
+                newSave.init();
+                newSave.setPostid(listPost.get(position).getPostid());
+                newSave.setTimestamp(Calendar.getInstance().getTimeInMillis());
+                newSave.setUserid(listPost.get(position).getUserid());
+                newSave.setUsername(listPost.get(position).getUsername());
+                newSave.setAudioLink(listPost.get(position).getAudioLink());
+                newSave.setAvatarLink(listPost.get(position).getAvatarLink());
+                newSave.setContent(listPost.get(position).getContent());
+                newSave.setImageLinks(listPost.get(position).getImageLinks());
+                String saveid = mDatabase.child("interactions/saved").child(currentUser.getUid()).push().getKey();
+                newSave.setSaveid(saveid);
+
+
+                //Push to database
+                mDatabase.child("interactions/saved").child(currentUser.getUid()).child(listPost.get(position).getPostid()).setValue(newSave);
+            }
+
+            @Override
+            public void unLiked(LikeButton saveButton) {
+
+                //Toast.makeText(context, "You unliked post " + listPost.get(position).getContent(), Toast.LENGTH_SHORT).show();
+                // Tìm idPost đã lưu của userID trong saved để xóa
+                String idToRemove = listPost.get(position).getPostid();
+                mDatabase.child("interactions/saved").child(currentUser.getUid())
+                        .orderByChild("postid").equalTo(idToRemove)
+                        .addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                for (DataSnapshot data : dataSnapshot.getChildren()) {
+                                    mDatabase.child("interactions/saved")
+                                            .child(currentUser.getUid())
+                                            .child(data.getKey()).removeValue();
+                                    viewHolder.imgbtnSave.setLiked(false);
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+
+                            }
+                        });
             }
         });
     }
-
 
     public void addItem(Post post){
         for(int i=0; i<listPost.size(); i++){

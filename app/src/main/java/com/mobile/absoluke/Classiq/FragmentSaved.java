@@ -113,8 +113,8 @@ public class FragmentSaved extends Fragment {
         }
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        postUserRef = mDatabase.child("interactions/posts").child(userID);
-        storage = FirebaseStorage.getInstance("gs://travellie-5884f.appspot.com");
+        postUserRef = mDatabase.child("interactions/saved").child(userID);
+        storage = FirebaseStorage.getInstance("gs://classiq-server.appspot.com");
         storageRef = storage.getReference();
 
         // Lấy user info
