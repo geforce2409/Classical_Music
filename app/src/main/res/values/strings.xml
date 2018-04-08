@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">Travellie</string>
+    <string name="app_name" translatable="false">Classiq</string>
     <string name="title_activity_login">Đăng nhập</string>
 
     <!--facebook string-->
@@ -7,7 +7,7 @@
     <string name="fb_login_protocol_scheme" translatable="false">fb122046885142484</string>
 
     <!-- Strings related to sign in -->
-    <string name="email">Email</string>
+    <string name="email" translatable="false">Email</string>
     <string name="password">Mật khẩu</string>
     <string name="sign_in">Đăng nhập</string>
 
@@ -170,7 +170,6 @@
     <string name="notify_like">bình chọn</string>
     <string name="notify_cmt">bình luận</string>
     <string name="notify_shared">chia sẻ</string>
-    <string name="title_activity_login_email">Sign in</string>
 
     <!--Strings related to profile-->
     <string name="update_avatar_fail">Không thể cập nhật ảnh đại diện</string>
