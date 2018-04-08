@@ -98,26 +98,39 @@
             app:like_drawable="@drawable/loved"
             app:unlike_drawable="@drawable/love" />
 
-        <ImageButton
-            android:id="@+id/imgbtnCmt"
-            style="@style/bottom_icon"
-            android:layout_width="@dimen/imgbtn_size"
+        <com.like.LikeButton
+            android:id="@+id/imgbtnSave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/darker_gray"
+            app:anim_scale_factor="3"
+            app:icon_size="@dimen/imgbtn_size"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/imgbtnLike"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/comment" />
+            app:icon_type="star"
+            app:unlike_drawable="@drawable/star" />
 
-        <ImageButton
-            android:id="@+id/imgbtnShare"
-            style="@style/bottom_icon"
-            android:layout_width="17dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginStart="@dimen/feed_item_padding_left_right"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/imgbtnCmt"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/share" />
+        <!--<ImageButton-->
+        <!--android:id="@+id/imgbtnCmt"-->
+        <!--style="@style/bottom_icon"-->
+        <!--android:layout_width="@dimen/imgbtn_size"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintEnd_toStartOf="@+id/imgbtnLike"-->
+        <!--app:layout_constraintTop_toTopOf="parent"-->
+        <!--app:srcCompat="@drawable/comment" />-->
+
+        <!--<ImageButton-->
+        <!--android:id="@+id/imgbtnShare"-->
+        <!--style="@style/bottom_icon"-->
+        <!--android:layout_width="17dp"-->
+        <!--android:layout_marginEnd="20dp"-->
+        <!--android:layout_marginStart="@dimen/feed_item_padding_left_right"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintEnd_toStartOf="@+id/imgbtnCmt"-->
+        <!--app:layout_constraintTop_toTopOf="parent"-->
+        <!--app:layout_constraintVertical_bias="0.0"-->
+        <!--app:srcCompat="@drawable/share" />-->
 
         <TextView
             android:id="@+id/tvCount"

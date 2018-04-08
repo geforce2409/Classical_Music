@@ -290,7 +290,7 @@ public class PostRecyclerAdapter extends RecyclerView.Adapter<PostRecyclerAdapte
         //ImageView imgvwPhoto; //--TODO: change to FeedImageView
         ImageButton imgbtnCmt;
         ImageButton imgbtnShare;
-        LikeButton imgbtnLike;
+        LikeButton imgbtnLike, imgbtnSave;
         RecyclerView recyclerViewImages;
         ImageLinkAdapter imgAdapter;
         GridLayoutManager gridLayoutManager;
@@ -304,9 +304,10 @@ public class PostRecyclerAdapter extends RecyclerView.Adapter<PostRecyclerAdapte
             tvUseranme = itemView.findViewById(R.id.tvUsername);
             tvTimestamp = itemView.findViewById(R.id.tvTimestamp);
             tvContent = itemView.findViewById(R.id.tvContent);
-            imgbtnCmt = itemView.findViewById(R.id.imgbtnCmt);
-            imgbtnShare = itemView.findViewById(R.id.imgbtnShare);
+//            imgbtnCmt = itemView.findViewById(R.id.imgbtnCmt);
+//            imgbtnShare = itemView.findViewById(R.id.imgbtnShare);
             imgbtnLike = itemView.findViewById(R.id.imgbtnLike);
+            imgbtnSave = itemView.findViewById(R.id.imgbtnSave);
             recyclerViewImages = itemView.findViewById(R.id.recycler_view_images);
             gridLayoutManager = new GridLayoutManager(itemView.getContext(), 2);
             recyclerViewImages.setHasFixedSize(true);
