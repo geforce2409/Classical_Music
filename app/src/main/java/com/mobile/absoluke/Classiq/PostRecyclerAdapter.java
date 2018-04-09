@@ -1,6 +1,8 @@
 package com.mobile.absoluke.Classiq;
 
 import android.content.Context;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -57,6 +59,7 @@ public class PostRecyclerAdapter extends RecyclerView.Adapter<PostRecyclerAdapte
 
     String audioLink, avaLink, content;
     ArrayList<String> imgLinks;
+    MediaPlayer md = new MediaPlayer();
 
     public PostRecyclerAdapter(Context context, List<Post> lstPost){
         this.context = context;
@@ -125,6 +128,7 @@ public class PostRecyclerAdapter extends RecyclerView.Adapter<PostRecyclerAdapte
             }
         });
 
+        //Lấy saved
         mDatabase.child("interactions/saved").child(currentUser.getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -132,6 +136,23 @@ public class PostRecyclerAdapter extends RecyclerView.Adapter<PostRecyclerAdapte
                     Save s = data.getValue(Save.class);
                     if (s.getPostid().equals(listPost.get(position).getPostid()))
                         viewHolder.imgbtnSave.setLiked(true);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        //Lấy audioLink
+        mDatabase.child("posts_awaiting").child(listPost.get(position).getPostid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot data : dataSnapshot.getChildren()) {
+//                    Post p = data.getValue(Post.class);
+//                    if (p.getAudioLink().isEmpty())
+                        viewHolder.imgbtnMusic.setVisibility(View.GONE);
                 }
             }
 
@@ -277,7 +298,7 @@ public class PostRecyclerAdapter extends RecyclerView.Adapter<PostRecyclerAdapte
             }
         });
 
-        //--TO DO: Saved Posts
+        //Saved Posts
         viewHolder.imgbtnSave.setOnLikeListener(new OnLikeListener() {
             @Override
             public void liked(LikeButton saveButton) {
@@ -342,6 +363,39 @@ public class PostRecyclerAdapter extends RecyclerView.Adapter<PostRecyclerAdapte
                         });
             }
         });
+
+        //Play music
+        viewHolder.imgbtnMusic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (md.isPlaying()) {
+                    md.setLooping(false);
+                    md.stop();
+                    md.reset();
+                    if (!listPost.get(position).getAudioLink().isEmpty()){
+                        try {
+                            md.setDataSource(listPost.get(position).getAudioLink());
+                            md.prepare();
+                            md.setLooping(true);
+                            md.start();
+                        } catch (Exception e) {
+                            // TODO: handle exception
+                        }
+                    }
+                }
+                else {
+                    try {
+                        md.setAudioStreamType(AudioManager.STREAM_MUSIC);
+                        md.setDataSource(listPost.get(position).getAudioLink());
+                        md.prepare();
+                        md.setLooping(true);
+                        md.start();
+                    } catch (Exception e) {
+                        // TODO: handle exception
+                    }
+                }
+            }
+        });
     }
 
     public void addItem(Post post){
@@ -369,7 +423,7 @@ public class PostRecyclerAdapter extends RecyclerView.Adapter<PostRecyclerAdapte
         //TextView tvLink;
         //ImageView imgvwPhoto; //--TODO: change to FeedImageView
         ImageButton imgbtnCmt;
-        ImageButton imgbtnShare;
+        ImageButton imgbtnMusic;
         LikeButton imgbtnLike, imgbtnSave;
         RecyclerView recyclerViewImages;
         ImageLinkAdapter imgAdapter;
@@ -385,7 +439,7 @@ public class PostRecyclerAdapter extends RecyclerView.Adapter<PostRecyclerAdapte
             tvTimestamp = itemView.findViewById(R.id.tvTimestamp);
             tvContent = itemView.findViewById(R.id.tvContent);
 //            imgbtnCmt = itemView.findViewById(R.id.imgbtnCmt);
-//            imgbtnShare = itemView.findViewById(R.id.imgbtnShare);
+            imgbtnMusic = itemView.findViewById(R.id.imgbtnMusic);
             imgbtnLike = itemView.findViewById(R.id.imgbtnLike);
             imgbtnSave = itemView.findViewById(R.id.imgbtnSave);
             recyclerViewImages = itemView.findViewById(R.id.recycler_view_images);
