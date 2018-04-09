@@ -36,8 +36,6 @@
                 android:layout_height="match_parent">
 
                 <!-- This is a custom left side button -->
-
-                <!-- This is a custom right side button -->
                 <ImageButton
                     android:id="@+id/btn_left"
                     style="@style/Widget.AppCompat.ActionButton"
@@ -55,6 +53,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
+                <!-- This is a custom right side button -->
                 <ImageButton
                     android:id="@+id/btn_right"
                     style="@style/Widget.AppCompat.ActionButton"
@@ -63,6 +62,7 @@
                     android:layout_marginBottom="8dp"
                     android:layout_marginTop="8dp"
                     android:background="?attr/selectableItemBackground"
+                    android:foreground="?attr/selectableItemBackground"
                     android:padding="10dp"
                     android:scaleType="fitCenter"
                     android:src="@drawable/power"

@@ -52,8 +52,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ratingBar" />
 
-    <!--TODO: https://github.com/sujithkanna/SmileyRating-->
-
     <android.support.constraint.ConstraintLayout
         android:id="@+id/bottomPanel"
         android:layout_width="0dp"
