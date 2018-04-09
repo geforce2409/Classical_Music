@@ -152,7 +152,7 @@ public class PostRecyclerAdapter extends RecyclerView.Adapter<PostRecyclerAdapte
                 for (DataSnapshot data : dataSnapshot.getChildren()) {
 //                    Post p = data.getValue(Post.class);
 //                    if (p.getAudioLink().isEmpty())
-                        viewHolder.imgbtnMusic.setVisibility(View.GONE);
+//                        viewHolder.imgbtnMusic.setVisibility(View.GONE);
                 }
             }
 
