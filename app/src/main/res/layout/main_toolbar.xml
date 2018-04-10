@@ -29,12 +29,9 @@
                 <!-- This is a custom left side button -->
                 <ImageButton
                     android:id="@+id/btn_notification"
-                    style="@style/Widget.AppCompat.ActionButton"
+                    style="@style/btn_img"
                     android:layout_width="45dp"
                     android:layout_height="45dp"
-                    android:background="?attr/selectableItemBackground"
-                    android:foreground="?attr/selectableItemBackground"
-                    android:scaleType="fitCenter"
                     android:src="@drawable/notification"
                     android:tint="@android:color/darker_gray"
                     app:layout_constraintBottom_toBottomOf="parent"

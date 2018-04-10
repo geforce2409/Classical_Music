@@ -38,15 +38,12 @@
                 <!-- This is a custom left side button -->
                 <ImageButton
                     android:id="@+id/btn_left"
-                    style="@style/Widget.AppCompat.ActionButton"
+                    style="@style/btn_img"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_marginBottom="8dp"
                     android:layout_marginStart="4dp"
                     android:layout_marginTop="4dp"
-                    android:background="?attr/selectableItemBackground"
-                    android:foreground="?attr/selectableItemBackground"
-                    android:scaleType="fitCenter"
                     android:src="@drawable/left_arrow"
                     android:tint="@android:color/black"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -56,15 +53,11 @@
                 <!-- This is a custom right side button -->
                 <ImageButton
                     android:id="@+id/btn_right"
-                    style="@style/Widget.AppCompat.ActionButton"
+                    style="@style/btn_img"
                     android:layout_width="45dp"
                     android:layout_height="45dp"
                     android:layout_marginBottom="8dp"
                     android:layout_marginTop="8dp"
-                    android:background="?attr/selectableItemBackground"
-                    android:foreground="?attr/selectableItemBackground"
-                    android:padding="10dp"
-                    android:scaleType="fitCenter"
                     android:src="@drawable/power"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
