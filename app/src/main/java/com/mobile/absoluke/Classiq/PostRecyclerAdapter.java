@@ -1,6 +1,7 @@
 package com.mobile.absoluke.Classiq;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -109,8 +110,8 @@ public class PostRecyclerAdapter extends RecyclerView.Adapter<PostRecyclerAdapte
 //
 //            }
 //        });
-        //Lấy like
 
+        //Lấy like
         mDatabase.child("interactions/likes").child(listPost.get(position).getPostid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -146,14 +147,14 @@ public class PostRecyclerAdapter extends RecyclerView.Adapter<PostRecyclerAdapte
         });
 
         //Lấy audioLink
-        mDatabase.child("posts_awaiting").child(listPost.get(position).getPostid()).addValueEventListener(new ValueEventListener() {
+        mDatabase.child("posts_awaiting").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot data : dataSnapshot.getChildren()) {
+//                for (DataSnapshot data : dataSnapshot.getChildren()) {
 //                    Post p = data.getValue(Post.class);
 //                    if (p.getAudioLink().isEmpty())
 //                        viewHolder.imgbtnMusic.setVisibility(View.GONE);
-                }
+//                }
             }
 
             @Override
@@ -372,16 +373,16 @@ public class PostRecyclerAdapter extends RecyclerView.Adapter<PostRecyclerAdapte
                     md.setLooping(false);
                     md.stop();
                     md.reset();
-                    if (!listPost.get(position).getAudioLink().isEmpty()){
-                        try {
-                            md.setDataSource(listPost.get(position).getAudioLink());
-                            md.prepare();
-                            md.setLooping(true);
-                            md.start();
-                        } catch (Exception e) {
-                            // TODO: handle exception
-                        }
-                    }
+//                    if (!listPost.get(position).getAudioLink().isEmpty()){
+//                        try {
+//                            md.setDataSource(listPost.get(position).getAudioLink());
+//                            md.prepare();
+//                            md.setLooping(true);
+//                            md.start();
+//                        } catch (Exception e) {
+//                            // TODO: handle exception
+//                        }
+//                    }
                 }
                 else {
                     try {

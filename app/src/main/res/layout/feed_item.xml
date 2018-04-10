@@ -51,7 +51,6 @@
             android:id="@+id/tvContent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:maxLines="5"
             android:paddingEnd="@dimen/feed_item_padding_left_right"
             android:paddingStart="@dimen/feed_item_padding_left_right"
             android:text="@string/large_text"
