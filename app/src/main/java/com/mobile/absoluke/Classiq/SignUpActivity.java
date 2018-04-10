@@ -161,7 +161,7 @@ public class SignUpActivity extends AppCompatActivity {
 
                                                 //Direct user to main activity
                                                 Toast.makeText(SignUpActivity.this, R.string.sign_up_success, Toast.LENGTH_SHORT).show();
-                                                Tool.changeActivity(SignUpActivity.this, MainActivity.class);
+                                                Tool.changeActivity(SignUpActivity.this, ProfileActivity.class);
                                             }
                                         })
                                         .addOnFailureListener(new OnFailureListener() {
