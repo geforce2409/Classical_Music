@@ -117,7 +117,7 @@
             <FrameLayout
                 android:id="@+id/frameContent"
                 android:layout_width="match_parent"
-                android:layout_height="700dp"
+                android:layout_height="4000dp"
                 android:layout_marginTop="@dimen/feed_item_padding_top_bottom"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
